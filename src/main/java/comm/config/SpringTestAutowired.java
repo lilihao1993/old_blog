@@ -12,5 +12,5 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:spring.xml","classpath*:mybatis.xml" ,"classpath*:spring-mvc.xml"})
-public class SpringTestAutowired{}
+public class SpringTestAutowired{ }
 
