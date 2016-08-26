@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- 根节点 -->
+<generatorConfiguration>
+	<context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+	   <!-- 模块包名 -->
+      <property name="modulePackage" value="system"/>
+      <!-- 生成项目 -->
+      <property name="targetProject" value="src/main/java"/>
+      	 
+	  <commentGenerator>
+          <property name="suppressDate" value="true"/>
+      </commentGenerator>
+	             
+      <!-- 数据库连接 --> 
+      <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                      connectionURL="jdbc:mysql://localhost:3306/blog"
+                      userId="root"
+                      password="llh1993824">
+      </jdbcConnection>
+      
+      <!-- 此元素指定decimal和numeric列使用的java.math.bigdecimal类型 -->
+      <javaTypeResolver>
+          <property name="forceBigDecimals" value="false"/>
+      </javaTypeResolver>
+      
+      <!-- 生成model路径 -->
+      <javaModelGenerator targetPackage="system.model" targetProject="src/main/java"/>
+	 
+	 <!-- 生成mapping路径 -->
+	  <sqlMapGenerator targetPackage="system.mapper.mapping" targetProject="src/main/java"/>
+	 
+	 <!-- mapper路径 -->
+	 <javaClientGenerator type="XMLMAPPER" targetPackage="system.mapper" targetProject="src/main/java"/>
+	 
+	 <table tableName="BLOG_LABEL" domainObjectName="Label" schema="blog">
+            <generatedKey column="id" sqlStatement="select replace(uuid(), '-', '')" type="pre"/>
+            <columnRenamingRule searchString="^BL_" replaceString=""/>
+     </table>
+	</context>
+</generatorConfiguration>  

@@ -1,0 +1,12 @@
+@font-face {
+    font-family:time;
+    src: url("../font/time.ttf");
+}
+@font-face {
+    font-family:scxht;
+    src: url("../font/scxht.ttf");
+}
+
+body{
+    font-family:scxht;
+}
