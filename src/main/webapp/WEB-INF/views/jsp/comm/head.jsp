@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"  pageEncoding="utf-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="<c:url value='/css/comm/head.css'/> "/>
 <div class="container-fluid">
@@ -10,7 +10,7 @@
                 </li>
                 <li class="dropdown">
                     <a class="sf-with-ul">其他项目</a>
-                    <ul class="dropdown-menu" >
+                    <ul class="dropdown-menu">
                         <li>
                             <a href="./zm.html">91桌面</a>
                         </li>
@@ -43,25 +43,39 @@
             </ul>
         </div>
         <div class="col-md-6">
-           <button id="button" class="btn btn-md btn-default col-sm-offset-10" type="button">
-               登录
-           </button>
+            <button id="show" class="btn btn-md btn-default col-sm-offset-10" type="button">
+                登录
+            </button>
         </div>
     </div>
 </div>
 
-<form class="col-md-3">
-    <div class="form-group">
-        <label for="exampleInputEmail1">用户名</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+<form class="hidden">
+    <div class="row">
+        <div class="form-group">
+            <img class="col-md-offset-4"  src="<c:url value="/img/ico/user.ico"/>"/>
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="exampleInputPassword1">密码</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <div class="row">
+        <div class="form-group">
+            <label for="exampleInputEmail1">用户名</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        </div>
     </div>
 
-    <button type="submit" class="btn btn-default">登录</button>
+    <div class="row">
+        <div class="form-group">
+            <label for="exampleInputPassword1">密码</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+    </div>
+
+    <div class="row">
+       <div class="form-group">
+           <button id="login"  type="submit" class="btn btn-default">登 录</button>
+       </div>
+    </div>
 </form>
 
 
