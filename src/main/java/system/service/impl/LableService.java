@@ -1,6 +1,7 @@
 package system.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import system.mapper.LabelMapper;
 import system.model.Label;
 import system.model.LabelExample;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * 描述：标签service
  */
+@Service
 public class LableService implements ILableService {
 
     /**

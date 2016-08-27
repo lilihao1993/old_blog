@@ -13,7 +13,7 @@
     http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"> 
 	
 	<!-- 扫描controller（controller层注入） -->
-   <context:component-scan base-package="system.controller,system.system.service"/>
+   <context:component-scan base-package="system.controller,system.service"/>
    <mvc:annotation-driven/>
 
    	<!-- 默认进入页面，以及错误页面配置 -->
