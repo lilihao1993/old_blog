@@ -53,7 +53,7 @@
 <form class="hidden">
     <div class="row">
         <div class="form-group">
-            <img class="col-md-offset-4"  src="<c:url value="/img/ico/user.ico"/>"/>
+            <img class="col-md-offset-4" src="<c:url value="/img/ico/user.ico"/>"/>
         </div>
     </div>
 
@@ -72,9 +72,9 @@
     </div>
 
     <div class="row">
-       <div class="form-group">
-           <button id="login"  type="submit" class="btn btn-default">登 录</button>
-       </div>
+        <div class="form-group">
+            <button id="login" type="submit" class="btn btn-default">登 录</button>
+        </div>
     </div>
 </form>
 
