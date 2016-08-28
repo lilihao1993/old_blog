@@ -56,13 +56,15 @@
             <div class="form-group">
                 <img class="col-md-offset-4" src="<c:url value="/img/ico/user.ico"/>"/>
             </div>
-    
+            <div id="span" class="form-group">
+                <span></span>
+            </div>
         </div>
     
         <div class="row">
             <div class="form-group">
                 <label for="exampleInputEmail1">用户名</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <input type="username" class="form-control" id="exampleInputEmail1" placeholder="Email">
             </div>
         </div>
     
@@ -72,10 +74,10 @@
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
         </div>
-    
+
         <div class="row">
             <div class="form-group">
-                <button id="login" type="submit" class="btn btn-default">登 录</button>
+                <button id="login" type="button" class="btn btn-default">登 录</button>
             </div>
         </div>
     </form>

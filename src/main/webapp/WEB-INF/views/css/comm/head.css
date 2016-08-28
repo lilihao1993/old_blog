@@ -59,7 +59,7 @@
     top: 100px;
     left: 38%;
     width: 303px;
-    height: 400px;
+    height: 450px;
     background: #8e63cc;
     z-index: 999;
 }
@@ -86,3 +86,8 @@ form .form-group input:hover{
         border-width: 2px;
 }
 
+#span{
+    height: 15px;
+    margin: 0px 0px;
+    color: #22ff80;
+}
