@@ -41,5 +41,11 @@ public interface IUserService {
      */
     boolean modifyUser(User user) throws Exception;
 
-
+    /**
+     * 描述：用户名密码验证
+     * @param user
+     * @return
+     * @throws Exception
+     */
+    boolean loginValidate(User user) throws Exception;
 }

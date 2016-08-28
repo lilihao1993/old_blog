@@ -10,14 +10,14 @@
 }
 
 /*为登录按钮添加背景颜色*/
-#button {
+#show {
     background: #66CCFF;
     color: white;
     font-size: 15px;
 }
 
 /*为登录按钮添加鼠标悬停事件*/
-button[type="button"]:hover {
+#show[type="button"]:hover {
     background: #66CCFF;
     border-color: white;
 }
@@ -53,17 +53,20 @@ button[type="button"]:hover {
     font-size: 15px;
 }
 
-form {
+#form-div {
     background: papayawhip;
     position: absolute;
     top: 100px;
     left: 38%;
+    width: 303px;
     height: 400px;
     background: #8e63cc;
-    padding: 10px 30px 10px 30px;
     z-index: 999;
 }
 
+form{
+    padding: 10px 30px 10px 30px;
+}
 #bg {
     width: 100%;
     height: 100%;
@@ -77,5 +80,9 @@ form {
 #login{
     padding: 8px 120px 8px 120px;
     margin-top: 10px;
+}
+form .form-group input:hover{
+        box-shadow: 0 0 3px #000 inset;
+        border-width: 2px;
 }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="system.dao.UserDao">
+    <resultMap id="ResultMap" type="system.model.User" extends="system.mapper.UserMapper.BaseResultMap"/>
+
+    <!--根据用户名和密码获取用户-->
+    <select id="getUser" resultMap="ResultMap" parameterType="system.model.User" >
+          SELECT * FROM blog_user
+          WHERE BU_USERNAME = #{username} AND BU_PASSWORD = #{password}
+    </select>
+</mapper>

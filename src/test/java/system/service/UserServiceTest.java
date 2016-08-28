@@ -14,6 +14,7 @@ public class UserServiceTest extends SpringTestAutowired {
     @Autowired
     private IUserService userService;
 
+
     /**
      * 描述：获取用户测试
      *
@@ -67,6 +68,20 @@ public class UserServiceTest extends SpringTestAutowired {
     public void testDeleteUser() throws Exception {
         boolean flg = userService.deleteUser("486a0fbe690011e682adfcaa14e16be9");
         System.out.println(flg ? "删除成功" : "删除失败");
+    }
+
+    /**
+     * 描述：登录验证
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testValidate() throws Exception {
+        User user = new User();
+        user.setUsername("张三");
+        user.setPassword("llh1993");
+        boolean flg = userService.loginValidate(user);
+        System.out.println(flg ? "登录成功" : "登录失败");
     }
 
 }
