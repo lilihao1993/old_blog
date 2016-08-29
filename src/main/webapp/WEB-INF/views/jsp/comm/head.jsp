@@ -51,7 +51,7 @@
 </div>
 <div id="form-div" class="hidden">
     <img class="pull-right" src="<c:url value="/img/ico/close.ico"/>"/>
-    <form>
+    <form action="/page/system/system">
         <div class="row">
             <div class="form-group">
                 <img class="col-md-offset-4" src="<c:url value="/img/ico/user.ico"/>"/>
@@ -64,14 +64,14 @@
         <div class="row">
             <div class="form-group">
                 <label for="exampleInputEmail1">用户名</label>
-                <input type="username" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <input type="username" class="form-control" id="username" placeholder="Email">
             </div>
         </div>
     
         <div class="row">
             <div class="form-group">
                 <label for="exampleInputPassword1">密码</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" id="password" placeholder="Password">
             </div>
         </div>
 

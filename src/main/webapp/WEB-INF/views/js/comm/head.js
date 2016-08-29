@@ -25,10 +25,11 @@ $(function () {
     $("#login").click(function () {
         $.ajax({
             url: "/client/login",
+            data: {username:$("#username").val(),password:$("#password").val()},
             success: function (a) {
                 var errorcode = a.error;
                 if (errorcode === "0") {
-                    /*跳转到后台页面*/
+                   $("form").submit();
                 } else {
                     /*返回错误信息*/
                     $("form .row span").html(errorcode);

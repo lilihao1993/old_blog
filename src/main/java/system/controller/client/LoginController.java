@@ -39,7 +39,7 @@ public class LoginController {
         if(flg){
             map.put("error","0");
         }else{
-            map.put("error","您用户名或密码错误");
+            map.put("error","您的用户名或密码错误");
         }
         return map;
     }
