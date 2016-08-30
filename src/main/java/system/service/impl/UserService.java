@@ -80,6 +80,7 @@ public class UserService implements IUserService {
      */
     @Override
     public boolean loginValidate(User user) throws Exception {
+        System.out.println(user.toString());
         User result = userDao.getUser(user);
         return result != null ? true : false;
     }

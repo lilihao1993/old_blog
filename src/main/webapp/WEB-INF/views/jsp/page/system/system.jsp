@@ -8,6 +8,21 @@
         <link rel="stylesheet" href="<c:url value='/css/bootstrap.css'/>">
     </head>
     <body>
+         <jsp:include page="../../../jsp/comm/clienthead.jsp"/>
+         <ul>
+             <li>
+
+             </li>
+             <li>
+
+             </li>
+             <li>
+
+             </li>
+             <li>
+
+             </li>
+         </ul>
         <h1>进入后端管理页面</h1>
     </body>
 </html>
