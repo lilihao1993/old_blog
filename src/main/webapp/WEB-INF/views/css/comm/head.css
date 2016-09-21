@@ -82,8 +82,8 @@
     margin-top: 10px;
 }
 form .form-group input:hover{
-        box-shadow: 0 0 3px #000 inset;
-        border-width: 2px;
+    box-shadow: 0 0 3px #000 inset;
+    border-width: 2px;
 }
 
 #span{

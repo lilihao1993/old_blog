@@ -1,28 +1,56 @@
 <%@page pageEncoding="utf-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Power-豪</title>
-        <link rel="shortcut icon" href="<c:url value='/img/ico/lastfm.ico'/>" type="image/x-icon"/>
-        <link rel="stylesheet" href="<c:url value='/css/bootstrap.css'/>">
-    </head>
-    <body>
-         <jsp:include page="../../../jsp/comm/clienthead.jsp"/>
-         <ul>
-             <li>
-
-             </li>
-             <li>
-
-             </li>
-             <li>
-
-             </li>
-             <li>
-
-             </li>
-         </ul>
-        <h1>进入后端管理页面</h1>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>Power-豪</title>
+    <link rel="shortcut icon" href="<c:url value='/img/ico/lastfm.ico'/>" type="image/x-icon"/>
+    <link rel="stylesheet" href="<c:url value='/css/bootstrap.css'/>">
+    <link rel="stylesheet" href="<c:url value='/css/style/system/system.css'/>">
+</head>
+<body>
+<jsp:include page="../../../jsp/comm/clienthead.jsp"/>
+<div class="row left-menu">
+    <div class="col-md-2">
+        <ul class="menu toggle-setting-promotion">
+            <li class="click-menu css-user-menu open">
+                <span>用户管理</span>
+                <ul style="display:none">
+                    <li><span><a >账户管理</a></span></li>
+                    <li><span>个人资料</span></li>
+                    <li><span>账户中心</span></li>
+                </ul>
+            </li>
+            <li class="click-menu css-user-menu open">
+                <span>应用管理</span>
+                <ul style="display: none">
+                    <li><span>账户管理</span></li>
+                    <li><span>个人资料</span></li>
+                    <li><span>账户中心</span></li>
+                </ul>
+            </li>
+            <li class="click-menu css-user-menu open">
+                <span>配置管理</span>
+                <ul style="display: none">
+                    <li><span>账户管理</span></li>
+                    <li><span>个人资料</span></li>
+                    <li><span>账户中心</span></li>
+                </ul>
+            </li>
+            <li class="click-menu css-user-menu open">
+                <span>业务统计</span>
+                <ul style="display: none">
+                    <li><span>账户管理</span></li>
+                    <li><span>个人资料</span></li>
+                    <li><span>账户中心</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<h1>进入后端管理页面</h1>
+</body>
+<script src="<c:url value='/js/jquery.js' />"></script>
+<script src="<c:url value='/js/bootstrap.js'/>"></script>
+<script src="<c:url value='/js/business/system/system.js'/>"></script>
 </html>

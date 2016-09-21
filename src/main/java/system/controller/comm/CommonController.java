@@ -1,5 +1,6 @@
 package system.controller.comm;
 
+import comm.aspect.ClientLogin;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CommonController {
 
     @RequestMapping("/page/{path}/{file}")
+    @ClientLogin
     public String page(@PathVariable("path") String path, @PathVariable("file") String file) throws Exception{
         return StringUtils.assemblyString("page/",path,"/",file);
     }

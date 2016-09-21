@@ -1,5 +1,10 @@
-.row{
+.clienthead{
     height: 60px;
     background-color: #4194ff;
     color: white;
+    padding: 20px 0 0 0 ;
+
+}
+.clienthead span{
+    margin: 0 15px 0 0;
 }

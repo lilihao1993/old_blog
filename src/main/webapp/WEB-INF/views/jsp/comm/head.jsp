@@ -60,14 +60,14 @@
                 <span></span>
             </div>
         </div>
-    
+
         <div class="row">
             <div class="form-group">
                 <label for="exampleInputEmail1">用户名</label>
                 <input type="username" class="form-control" id="username" placeholder="Email">
             </div>
         </div>
-    
+
         <div class="row">
             <div class="form-group">
                 <label for="exampleInputPassword1">密码</label>
