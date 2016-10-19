@@ -40,13 +40,18 @@
             <li class="click-menu css-user-menu open">
                 <span>业务统计</span>
                 <ul style="display: none">
-                    <li><span>账户管理</span></li>
-                    <li><span>个人资料</span></li>
+                    <li><span><a href="/page/system/text">账户管理</a></span></li>
+                    <a href="/editor"><li><span> 个人资料</span></li></a>
                     <li><span>账户中心</span></li>
                 </ul>
             </li>
         </ul>
     </div>
+</div>
+<div>
+    <iframe src="<c:url value="/"/>">
+
+    </iframe>
 </div>
 <h1>进入后端管理页面</h1>
 </body>
