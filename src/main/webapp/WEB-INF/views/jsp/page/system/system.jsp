@@ -55,7 +55,13 @@
 </div>
 <h1>进入后端管理页面</h1>
 </body>
-<script src="<c:url value='/js/jquery.js' />"></script>
-<script src="<c:url value='/js/bootstrap.js'/>"></script>
-<script src="<c:url value='/js/business/system/system.js'/>"></script>
+<script src="<c:url value='/js/lib/layui/layui.js' />"></script>
+<script src="<c:url value='/js/require.js'/>"></script>
+<script src="<c:url value='/js/config.js'/>"></script>
+<script>
+    layui.config({
+        base: '/js/' //你的模块目录
+    }).use('business/system/controller/systemController'); //加载入口
+
+</script>
 </html>
