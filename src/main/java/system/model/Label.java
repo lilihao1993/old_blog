@@ -130,4 +130,14 @@ public class Label {
     public void setOperationTime(Date operationTime) {
         this.operationTime = operationTime;
     }
+
+    @Override
+    public String toString() {
+        return "Label{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", createTime=" + createTime +
+                ", operationTime=" + operationTime +
+                '}';
+    }
 }

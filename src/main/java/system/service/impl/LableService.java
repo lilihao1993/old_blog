@@ -1,5 +1,7 @@
 package system.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import system.mapper.LabelMapper;
@@ -30,7 +32,10 @@ public class LableService implements ILableService {
      */
     @Override
     public List<Label> getLableList(LabelExample labelExample) throws Exception {
+
+        PageHelper.offsetPage(1,2);
         List<Label> labels = labelMapper.selectByExample(labelExample);
+        PageInfo pageInfo = new PageInfo(labels);
         return labels;
     }
 

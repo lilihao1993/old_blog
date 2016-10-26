@@ -82,6 +82,19 @@
 				</value>
 			</list>
 		</property>
+       <property name="typeAliasesPackage" value="com.isea533.ssm.model"/>
+       <property name="plugins">
+           <array>
+               <bean class="com.github.pagehelper.PageHelper">
+                   <property name="properties">
+                       <value>
+                           dialect=hsqldb
+                           reasonable=true
+                       </value>
+                   </property>
+               </bean>
+           </array>
+       </property>
   </bean>    
           
           
