@@ -39,7 +39,7 @@ $(function () {
     function login() {
         $.ajax({
             url: "/client/login",
-            data: {username: $("#username").val(), password: $("#password").val()},
+            data: {userName: $("#username").val(), password: $("#password").val()},
             success: function (a) {
                 var errorcode = a.error;
                 if (errorcode === "0") {

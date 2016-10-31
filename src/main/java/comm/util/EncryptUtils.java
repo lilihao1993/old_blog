@@ -1,9 +1,11 @@
 package comm.util;
 
 import com.sun.org.apache.xerces.internal.dom.PSVIAttrNSImpl;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
+import system.model.User;
 
 import java.security.MessageDigest;
 
@@ -36,16 +38,18 @@ public class EncryptUtils extends Md5Utils {
     }
 
     /**
-     * 银行用户密码加密
+     * 用户密码加密
      *
      * @param user 用户信息
      */
-//    public static void encryptPassword(BankUser user) {
-//        String salt = randomNumberGenerator.nextBytes().toHex();
-//        user.setEncryptSalt(salt);
-//        user.setLoginPass(encryptPassword(user.getLoginPass(),
-//                user.getEncryptSalt()));
-//    }
+    public static void encryptPassword(User user) {
+        String salt = randomNumberGenerator.nextBytes().toHex();
+        user.setEncryptSalt(salt);
+        user.setPassword(encryptPassword(user.getPassword(),
+                user.getEncryptSalt()));
+    }
+
+
 
     /**
      * md5哈希
@@ -76,8 +80,14 @@ public class EncryptUtils extends Md5Utils {
     }
 
     public static void main(String[] args) {
-        String ecode = md5Encoder("llh1993824");
-        String result = encryptPassword("llh19938241",randomNumberGenerator.nextBytes().toHex());
-        System.out.println(ecode +"-----"+result);
+//        String ecode = md5Encoder("llh1993824");
+//        String result = encryptPassword("llh19938241",randomNumberGenerator.nextBytes().toHex());
+//        System.out.println(ecode +"-----"+result);
+//        System.out.println(encryptPassword("llh1993824","6f5a06a658938c7ed05d79fdf6a7e0ad"));
+//        System.out.println("be7f94bbc22eb9a2655f773b55986104");
+        User user = new User();
+        user.setPassword("llh1993824");
+        encryptPassword(user);
+        System.out.println(user.toString());
     }
 }
