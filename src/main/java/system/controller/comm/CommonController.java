@@ -17,4 +17,16 @@ public class CommonController {
         return StringUtils.assemblyString("page/",path,"/",file);
     }
 
+
+    @RequestMapping("/page/{path}/{path1}/{file}")
+    @ClientLogin
+    public String page(@PathVariable("path") String path,@PathVariable("path1") String path1, @PathVariable("file") String file) throws Exception{
+        return StringUtils.assemblyString("page/",path,"/",path1,"/",file);
+    }
+
+    @RequestMapping("/page/{path}/{path1}/{path2}/{file}")
+    @ClientLogin
+    public String page(@PathVariable("path") String path,@PathVariable("path1") String path1,@PathVariable("path2") String path2, @PathVariable("file") String file) throws Exception{
+        return StringUtils.assemblyString("page/",path,"/",path1,"/",path2,"/",file);
+    }
 }

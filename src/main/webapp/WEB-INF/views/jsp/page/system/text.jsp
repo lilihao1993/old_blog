@@ -147,6 +147,7 @@
 
     <br><br>
 </body>
+<iframe src="http://www.baidu.com"></iframe>
 <script src="<c:url value='/js/lib/layui/layui.js' />"></script>
 <script src="<c:url value='/js/require.js'/>"></script>
 <script src="<c:url value='/js/config.js'/>"></script>

@@ -2,7 +2,8 @@ require.config({
     baseUrl: '/js',
     paths: {
         'jquery': 'jquery',
-        'layer': 'lib/layui/layui',
+        'layui': 'lib/layui/layui',
+        'layer1': 'lib/layer/layer',
         'laydate': "lib/layui/lay/modules/laydate",
         'layedit':"lib/layui/lay/modules/layedit",
         'jquery.validate': 'lib/validate/jquery.validate.min'

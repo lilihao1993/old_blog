@@ -1,5 +1,7 @@
 package system.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Label {
@@ -25,6 +27,7 @@ public class Label {
      *
      * @mbggenerated
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime;
 
     /**
@@ -33,6 +36,7 @@ public class Label {
      *
      * @mbggenerated
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date operateTime;
 
     /**

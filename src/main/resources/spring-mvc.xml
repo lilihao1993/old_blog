@@ -12,9 +12,14 @@
     http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 	
 	<!-- 扫描controller（controller层注入） -->
-   <context:component-scan base-package="system.controller,system.service,comm"/>
-   <mvc:annotation-driven/>
-
+   <context:component-scan base-package="system.controller,system.service,comm"  use-default-filters="false">
+	   <context:include-filter type="annotation"
+							   expression="org.springframework.stereotype.Controller"/>
+	   <context:include-filter type="annotation"
+							   expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+   </context:component-scan>
+	<!-- 当在web.xml 中 DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
+	<mvc:default-servlet-handler/>
    	<!-- 默认进入页面，以及错误页面配置 -->
    	<mvc:view-controller path="/" view-name="index"/>
 	<mvc:view-controller path="/error404" view-name="error404"/>
@@ -27,27 +32,12 @@
 	<mvc:resources mapping="/js/**" location="/WEB-INF/views/js/" cache-period="0"/>
 	<mvc:resources mapping="/img/**" location="/WEB-INF/views/img/" cache-period="0"/>
 	<mvc:resources mapping="/font/**" location="/WEB-INF/views/font/" cache-period="0"/>
-   	<!-- 消息转换 -->
-	<!--<bean-->
-		<!--class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">-->
-		<!--<property name="messageConverters">-->
-			<!--<list>-->
-				<!--<ref bean="mappingJacksonHttpMessageConverter" />-->
-			<!--</list>-->
-		<!--</property>-->
-	<!--</bean>-->
-	<!-- Json数据转换 -->
-	<!-- org.springframework.http.converter.json.MappingJacksonHttpMessageConverter --> 
-	<!--  org.springframework.http.converter.json.MappingJackson2HttpMessageConverter-->
-	<!--<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" >-->
-		<!--<property name="supportedMediaTypes">-->
-			<!--<list>-->
-				<!--<value>application/json;charset=UTF-8</value>-->
-			<!--</list>-->
-
-		<!--</property>-->
-	<!--</bean>-->
-
+	<!-- jasckson2对象映射-->
+	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
+		<property name="serializationInclusion">
+			<value type="com.fasterxml.jackson.annotation.JsonInclude.Include">ALWAYS</value>
+		</property>
+	</bean>
 
 	<!-- 配置消息转换服务 -->
 	<mvc:annotation-driven>
@@ -59,30 +49,52 @@
 						<value>application/json;charset=UTF-8</value>
 					</list>
 				</property>
-				<property name="objectMapper">
-					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
-						<property name="dateFormat">
-							<bean class="java.text.SimpleDateFormat">
-								<constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
-							</bean>
-						</property>
-					</bean>
-				</property>
+				<property name="objectMapper" ref="objectMapper"/>
+				<property name="prettyPrint" value="true"/>
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
+	<!-- 根据路径后缀选择不同视图 -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager">
+			<bean class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+				<property name="mediaTypes">
+					<map>
+						<entry key="json" value="application/json"/>
+						<entry key="xml" value="application/xml"/>
+						<entry key="html" value="text/html"/>
+					</map>
+				</property>
+				<property name="defaultContentType" value="text/html"/>
+				<!-- 忽略Accept Header-->
+				<property name="ignoreAcceptHeader" value="true"/>
+				<!-- 关闭 ?format=json的支持 -->
+				<property name="favorParameter" value="false"/>
+				<!-- 开启扩展名支持 -->
+				<property name="favorPathExtension" value="true"/>
+			</bean>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<property name="viewClass"
+							  value="org.springframework.web.servlet.view.JstlView"/>
+					<property name="contentType" value="text/html"/>
+					<property name="prefix" value="/WEB-INF/views/jsp/"/>
+					<property name="suffix" value=".jsp"/>
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+					<property name="objectMapper" ref="objectMapper"/>
+					<property name="prettyPrint" value="true"/>
+				</bean>
+				<bean class="org.springframework.web.servlet.view.xml.MappingJackson2XmlView"/>
+			</list>
+		</property>
+	</bean>
 
-	 <!--&lt;!&ndash; 视图解析器 &ndash;&gt;-->
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:order="1">
-        <!-- 使用JSP页面进行输出 -->
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <!-- 这个配置是配置JSP页面的位置 -->
-		<property name="contentType" value="text/html" />
-        <property name="prefix" value="/WEB-INF/views/jsp/"/>
-        <!-- 指定了表示层的后缀 -->
-        <property name="suffix" value=".jsp"></property>
-    </bean>
-
-	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!--<aop:aspectj-autoproxy proxy-target-class="true" />-->
 </beans>
