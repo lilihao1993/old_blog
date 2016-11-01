@@ -1,5 +1,6 @@
 <%@page pageEncoding="utf-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -27,6 +28,7 @@
                     <li><span>账户管理</span></li>
                     <li><span>个人资料</span></li>
                     <li><span>账户中心</span></li>
+                    <li><span><a href="/admin/label/tolist?pageNum=0&pageSize=5">类别</a></span></li>
                 </ul>
             </li>
             <li class="click-menu css-user-menu open">

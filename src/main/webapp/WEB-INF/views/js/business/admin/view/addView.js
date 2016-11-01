@@ -1,12 +1,14 @@
 /**
  * 通用基础js
  */
-define(['business/admin/model/addModel', 'comm/util', 'jquery', 'laydate', 'layedit', 'jquery.validate', 'comm/validateRules'], function (model, util) {
+define(['business/admin/model/addModel', 'comm/util', 'jquery', 'laydate', 'layedit', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util) {
 
     /**
      * 渲染
      */
     function init(layer) {
+        //初始化分页条
+        _getFirstPage();
         //事件绑定
         _bind(layer);
     }
@@ -78,6 +80,36 @@ define(['business/admin/model/addModel', 'comm/util', 'jquery', 'laydate', 'laye
         });
     }
 
+    /**
+     * 分页配置参数
+     * @param data
+     * @param index
+     * @private
+     */
+    function _pagination(total, index) {
+        $('#pagination').pagination(total, {
+            items_per_page: pageSize,
+            prev_text: '<i class="icon-triangle-left"></i>上一页',
+            next_text: '下一页<i class="icon-triangle-right"></i>',
+            num_display_entries: 6,
+            num_edge_entries: 2,
+            current_page: index,
+            link_to: 'javascript:void(0)',
+            ellipse_text: '...',
+            first_text: '首页',
+            last_text: '末页',
+            callback: _pageSelectCallback
+        });
+    }
+
+    /**
+     * 渲染初始分页首页
+     * @private
+     */
+    function _getFirstPage() {
+        var itemCount = $("#itemCount").text();
+        _pagination(itemCount, 0);
+    }
 
     return {
         init: init

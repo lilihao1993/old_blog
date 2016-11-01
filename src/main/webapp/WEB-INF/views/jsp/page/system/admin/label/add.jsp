@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Power-豪</title>
@@ -22,7 +23,6 @@
       </div>
   </form>
 </body>
-<script src="<c:url value='/js/jquery.js'/>"></script>
 <script src="<c:url value='/js/lib/layui/layui.js' />"></script>
 <script src="<c:url value='/js/require.js'/>"></script>
 <script src="<c:url value='/js/config.js'/>"></script>
