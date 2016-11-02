@@ -49,7 +49,7 @@
             </li>
         </ul>
     </div>
-    <div id="iframe">
+    <div id="iframe-div">
         <iframe width="1210" height="900" src="<c:url value="/admin/label/tolist?pageNum=0&pageSize=5"/>">
 
         </iframe>

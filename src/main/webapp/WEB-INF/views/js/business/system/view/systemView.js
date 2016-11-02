@@ -25,13 +25,11 @@ define(['jquery', 'comm/util', 'laydate', 'layedit', 'jquery.validate'], functio
             el: 'div ul li',
             event: 'click',
             handler: function () {
-                var t = $(this).children("ul");
                 $(this).children("ul").toggle("normal");
             }
         }]);
     }
-
-
+    
     return {
         init: init
     };

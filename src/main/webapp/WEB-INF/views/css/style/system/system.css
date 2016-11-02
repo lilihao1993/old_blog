@@ -1,5 +1,9 @@
+body {
+    margin: 0;
+    padding: 0;
+}
 
-.left-menu .left{
+.left-menu .left {
     background: #36394d;
     color: white;
     height: 900px;
@@ -9,25 +13,27 @@
     margin-left: -40px;
     margin-right: -7px;
 }
-.left-menu ul span{
-    margin-left:40px;
+
+.left-menu ul span {
+    margin-left: 40px;
 
 }
 
-.left-menu ul li{
-    list-style:none;
+.left-menu ul li {
+    list-style: none;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px 0px 10px 0px;
 }
-.left-menu ul li:not(:first-child){
+
+.left-menu ul li:not(:first-child) {
     border-top: 1px solid #2a2d3e;
 }
 
-.left-menu ul li ul{
+.left-menu ul li ul {
     background: rgba(27, 26, 27, 0.58);
 }
 
-#iframe{
+#iframe-div {
     float: right;
 }
