@@ -38,6 +38,7 @@
 			<value type="com.fasterxml.jackson.annotation.JsonInclude.Include">ALWAYS</value>
 		</property>
 	</bean>
+
 	<!-- 配置消息转换服务 -->
 	<mvc:annotation-driven>
 		<mvc:message-converters>
@@ -52,6 +53,7 @@
 				<property name="prettyPrint" value="true"/>
 			</bean>
 		</mvc:message-converters>
+	</mvc:annotation-driven>
 	<!-- 根据路径后缀选择不同视图 -->
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="contentNegotiationManager">
@@ -94,5 +96,5 @@
 		</property>
 	</bean>
 
-	<!--<aop:aspectj-autoproxy proxy-target-class="true" />-->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
 </beans>

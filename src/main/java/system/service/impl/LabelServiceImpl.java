@@ -26,17 +26,21 @@ public class LabelServiceImpl implements ILabelService {
     /**
      * 描述：保存类别
      *
-     * @param name 类别名称
+     * @param label 类别对象
      * @return true：保存成功 false：保存失败
      * @throws Exception
      */
     @Override
-    public boolean save(String name) throws Exception {
-        Label label = new Label();
-        label.setName(name);
-        label.setCreateTime(new Date());
-        label.setOperateTime(label.getCreateTime());
-        return labelMapper.insert(label) > 0 ? true : false;
+    public boolean save(Label label) throws Exception {
+        boolean flag = true;
+        label.setOperateTime(new Date());
+        if (label.getId().isEmpty()) {
+            label.setCreateTime(label.getOperateTime());
+            flag = labelMapper.insert(label) > 0 ? true : false;
+        } else {
+            flag = labelMapper.updateByPrimaryKeySelective(label) > 0 ? true : false;
+        }
+        return flag;
     }
 
     /**
@@ -50,5 +54,31 @@ public class LabelServiceImpl implements ILabelService {
         PageHelper.startPage(pageNum, pageSize);
         Page<Label> page = (Page<Label>) labelMapper.selectByExample(new LabelExample());
         return page.toPageInfo();
+    }
+
+
+    /**
+     * 描述：删除类别
+     *
+     * @param id 类别唯一标识
+     * @return true： 删除成功 false：删除失败
+     * @throws Exception
+     */
+    @Override
+    public boolean remove(String id) throws Exception {
+        int flag = labelMapper.deleteByPrimaryKey(id);
+        return flag > 0 ? true : false;
+    }
+
+    /**
+     * 描述：获取类别
+     *
+     * @param id 类别唯一标识
+     * @return 类别
+     * @throws Exception
+     */
+    @Override
+    public Label getLabel(String id) throws Exception {
+        return labelMapper.selectByPrimaryKey(id);
     }
 }

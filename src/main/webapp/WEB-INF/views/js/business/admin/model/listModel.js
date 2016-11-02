@@ -24,7 +24,8 @@ define(['comm/http'], function (http) {
      */
     function delLabel(options) {
         http.httpRequest({
-            url: "/admin/label/page",
+            url: "/admin/label/delete",
+            type: "post",
             data: options.data,
             success: function (data) {
                 options.callBack(data);
@@ -35,6 +36,6 @@ define(['comm/http'], function (http) {
 
     return {
         getLabelList: getLabelList,
-        delLabel:delLabel
+        delLabel: delLabel
     }
 });

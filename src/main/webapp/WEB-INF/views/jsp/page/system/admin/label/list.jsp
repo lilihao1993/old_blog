@@ -12,6 +12,7 @@
 <body>
 <!--响应式表格-->
 <div class="table-responsive">
+    <button class="layui-btn layui-btn-big"><a href="/page/system/admin/label/add">新增类别</a></button>
     <table class="table table-bordered table-hover">
             <thead>
                 <tr>
@@ -24,14 +25,14 @@
             <tbody class="js-tbody">
                 <c:forEach items="${pageInfo.list}" var="label">
                    <tr>
-                       <td label-id="${label.id}">${label.name}</td>
+                       <td>${label.name}</td>
                        <td><fmt:formatDate value="${label.createTime}" pattern="yyyy-MM-dd"/></td>
                        <td><fmt:formatDate value="${label.operateTime}" pattern="yyyy-MM-dd"/></td>
                        <td>
                            <%--<a href="#">删除</a>--%>
                            <%--<a href="#">修改</a>--%>
-                           <button class="layui-btn layui-btn-small js-del">删除</button>
-                           <button class="layui-btn layui-btn-small js-edit">修改</button>
+                           <button class="layui-btn layui-btn-small js-del" label-id="${label.id}">删除</button>
+                           <button class="layui-btn layui-btn-small js-edit" ><a href="/admin/label/toedit/${label.id}">修改</a></button>
                        </td>
                    </tr>
                 </c:forEach>
@@ -53,8 +54,8 @@
             <td>
                 <%--<a href="#">删除</a>--%>
                 <%--<a href="#">修改</a>--%>
-                <button class="layui-btn layui-btn-small js-del">删除</button>
-                <button class="layui-btn layui-btn-small js-edit">修改</button>
+                <button class="layui-btn layui-btn-small js-del" label-id="{{id}}">删除</button>
+                <button class="layui-btn layui-btn-small js-edit" ><a href="/admin/label/toedit/{{id}}">修改</a></button>
             </td>
         </tr>
     {{/each}}

@@ -3,12 +3,10 @@ package system.controller.admin;
 import com.github.pagehelper.PageInfo;
 import comm.bean.AjaxResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import system.model.Label;
 import system.service.ILabelService;
 
@@ -32,14 +30,14 @@ public class LabelController {
     /**
      * 描述：保存类别
      *
-     * @param name 类别名称
+     * @param label 类别对象
      * @return
      * @throws Exception
      */
     @ResponseBody()
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public AjaxResponse<Boolean> add(String name) throws Exception {
-        boolean flag = labelService.save(name);
+    public AjaxResponse<Boolean> add(@ModelAttribute("label") Label label) throws Exception {
+        boolean flag = labelService.save(label);
         return new AjaxResponse<>(flag);
     }
 
@@ -75,5 +73,33 @@ public class LabelController {
                                               @RequestParam(value = "pageSize", required = false) int pageSize) throws Exception {
         PageInfo<Label> pageInfo = labelService.getList(pageNum, pageSize);
         return new AjaxResponse<>(pageInfo);
+    }
+
+    /**
+     * 描述：删除类别
+     *
+     * @param id 类别唯一表示
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public AjaxResponse<Boolean> delete(@RequestParam(value = "id", required = true) String id) throws Exception {
+        return new AjaxResponse<>(labelService.remove(id));
+    }
+
+    /**
+     * 描述：跳转类别修改页
+     *
+     * @param id 类别唯一标识
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "toedit/{id}", method = RequestMethod.GET)
+    public String toEdit(@PathVariable("id") String id, Model model) throws Exception {
+        System.out.println("--" + id);
+        Label label = labelService.getLabel(id);
+        model.addAttribute("label", label);
+        return "page/system/admin/label/add";
     }
 }

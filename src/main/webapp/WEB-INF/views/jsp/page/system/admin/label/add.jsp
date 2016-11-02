@@ -13,7 +13,7 @@
       <div class="layui-form-item">
           <label class="layui-form-label">类别名称</label>
           <div class="layui-input-block">
-              <input type="text" name="name" id="name" placeholder="请输入类别名称" autocomplete="off" class="layui-input">
+              <input type="text" name="name" label-id="${label.id}" value="${label.name}" id="name" placeholder="请输入类别名称" autocomplete="off" class="layui-input">
           </div>
       </div>
       <div class="layui-form-item">

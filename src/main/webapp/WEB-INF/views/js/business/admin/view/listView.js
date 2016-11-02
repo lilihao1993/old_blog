@@ -33,7 +33,12 @@ define(['business/admin/model/listModel', 'comm/util', 'handlebars', 'laydate', 
                 el: '.js-del',
                 event: 'click',
                 handler: function () {
-                    $(this)
+                    var id = $(this).attr("label-id")
+                    layer.confirm("确认删除本类别？", {icon: 3, title: "提示"}, function () {
+                        _delLabel(id);
+                        layer.closeAll('dialog');
+                        window.location.reload();
+                    });
                 }
             }
         ])
@@ -49,7 +54,11 @@ define(['business/admin/model/listModel', 'comm/util', 'handlebars', 'laydate', 
             data: {
                 id: id
             }, callBack: function (data) {
-
+                if (data) {
+                    return true;
+                } else {
+                    layer.alert("删除失败,请重试");
+                }
             }, error: function (jqXHR) {
                 layer.alert('操作失败，请重试');
             }
@@ -68,7 +77,6 @@ define(['business/admin/model/listModel', 'comm/util', 'handlebars', 'laydate', 
                 pageNum: pageNum + 1,
                 pageSize: pageSize
             }, callBack: function (data) {
-                console.log(data);
                 //总条数
                 var total = data.data.total;
                 //创建模板

@@ -5,7 +5,7 @@ define(['comm/http'], function (http) {
 
     function saveLabel(options) {
         http.httpRequest({
-            url: "/admin/label/delete",
+            url: "/admin/label/add",
             type: "post",
             data: options.data,
             success: function (data) {
