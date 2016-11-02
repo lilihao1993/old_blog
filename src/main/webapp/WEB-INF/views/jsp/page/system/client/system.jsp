@@ -12,7 +12,7 @@
 <body>
 <jsp:include page="../../../comm/clienthead.jsp"/>
 <div class="row left-menu">
-    <div class="col-md-2">
+    <div class="col-md-2 left">
         <ul class="menu toggle-setting-promotion">
             <li class="click-menu css-user-menu open">
                 <span>用户管理</span>
@@ -49,12 +49,14 @@
             </li>
         </ul>
     </div>
-</div>
-<div>
-    <iframe src="<c:url value="/"/>">
+    <div id="iframe">
+        <iframe width="1210" height="900" src="<c:url value="/admin/label/tolist?pageNum=0&pageSize=5"/>">
 
-    </iframe>
+        </iframe>
+    </div>
 </div>
+
+
 <h1>进入后端管理页面</h1>
 </body>
 <script src="<c:url value='/js/lib/layui/layui.js' />"></script>

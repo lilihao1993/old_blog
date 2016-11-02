@@ -1,5 +1,5 @@
 
-.left-menu div{
+.left-menu .left{
     background: #36394d;
     color: white;
     height: 900px;
@@ -26,4 +26,8 @@
 
 .left-menu ul li ul{
     background: rgba(27, 26, 27, 0.58);
+}
+
+#iframe{
+    float: right;
 }

@@ -7,9 +7,9 @@
 </head>
 <body>
 <div class="row clienthead">
-    <div class="col-md-3">
+    <div class="col-md-8">
     </div>
-    <div class="col-md-4 col-md-offset-10">
+    <div class="col-md-4 prt">
             <span>
                 帮助
             </span>

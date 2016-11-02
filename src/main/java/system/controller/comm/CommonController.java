@@ -2,6 +2,7 @@ package system.controller.comm;
 
 import comm.aspect.ClientLogin;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,4 +30,5 @@ public class CommonController {
     public String page(@PathVariable("path") String path,@PathVariable("path1") String path1,@PathVariable("path2") String path2, @PathVariable("file") String file) throws Exception{
         return StringUtils.assemblyString("page/",path,"/",path1,"/",path2,"/",file);
     }
+
 }
