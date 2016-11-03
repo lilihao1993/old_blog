@@ -1,7 +1,7 @@
 /**
  * 通用基础js
  */
-define(['business/admin/model/addModel', 'comm/util', 'jquery', 'laydate', 'layedit', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util) {
+define(['business/admin/label/model/addModel', 'comm/util', 'jquery', 'laydate', 'layedit', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util) {
 
     /**
      * 渲染

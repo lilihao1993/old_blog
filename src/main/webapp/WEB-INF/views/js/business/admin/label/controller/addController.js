@@ -5,7 +5,7 @@ layui.define(['layer', 'form'], function (exports) {
     var layer = layui.layer
         , form = layui.form();
 
-    require(['business/admin/view/listView'], function (view) {
+    require(['business/admin/label/view/addView'], function (view) {
         view.init(layer);
     });
 

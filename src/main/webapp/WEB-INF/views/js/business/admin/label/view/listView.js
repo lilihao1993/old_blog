@@ -1,7 +1,7 @@
 /**
  * 通用基础js
  */
-define(['business/admin/model/listModel', 'comm/util', 'handlebars', 'laydate', 'comm/hbsHelper', 'layedit', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util, handlebars) {
+define(['business/admin/label/model/listModel', 'comm/util', 'handlebars', 'laydate', 'comm/hbsHelper', 'layedit', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util, handlebars) {
 
     var pageSize = 5;
     var layer = '';

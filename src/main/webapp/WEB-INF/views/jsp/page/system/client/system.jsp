@@ -27,7 +27,7 @@
                 <ul style="display: none">
                     <li><span>账户管理</span></li>
                     <li><span>个人资料</span></li>
-                    <li><span>账户中心</span></li>
+                    <li  id="lt" js-url="http://www.baidu.com"><span>账户中心</span></li>
                     <li><span><a href="/admin/label/tolist?pageNum=0&pageSize=5">类别</a></span></li>
                 </ul>
             </li>
@@ -50,7 +50,7 @@
         </ul>
     </div>
     <div id="iframe-div">
-        <iframe width="1210" height="900" src="<c:url value="/admin/label/tolist?pageNum=0&pageSize=5"/>">
+        <iframe width="1210" height="900"  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" src="<c:url value='/admin/label/tolist?pageNum=0&pageSize=5'/>">
 
         </iframe>
     </div>

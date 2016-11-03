@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,8 +9,12 @@
 <body>
 <div class="row clienthead">
     <div class="col-md-8">
+        <span>
+            <a href="<c:url value='/page/system/admin/resources/add'/>">新增资源</a>
+        </span>
     </div>
     <div class="col-md-4 prt">
+
             <span>
                 帮助
             </span>

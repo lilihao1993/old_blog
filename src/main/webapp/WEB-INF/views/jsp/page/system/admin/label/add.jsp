@@ -30,6 +30,6 @@
 <script>
     layui.config({
         base: '/js/' //你的模块目录
-    }).use('business/admin/controller/addController'); //加载入口
+    }).use('business/admin/label/controller/addController'); //加载入口
 </script>
 </html>

@@ -26,8 +26,13 @@ define(['jquery', 'comm/util', 'laydate', 'layedit', 'jquery.validate'], functio
             event: 'click',
             handler: function () {
                 $(this).children("ul").toggle("normal");
-            }
-        }]);
+            }},{
+            el: 'li',
+            event: 'click',
+            handler: function () {
+               $("iframe").attr("src",$(this).attr("js-url"));
+            }}
+        ]);
     }
     
     return {

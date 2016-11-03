@@ -1,11 +1,11 @@
 /**
- * Created by Administrator on 2016/10/31.
+ * Created by Administrator on 2016/11/3.
  */
 layui.define(['layer', 'form'], function (exports) {
     var layer = layui.layer
         , form = layui.form();
 
-    require(['business/admin/view/addView'], function (view) {
+    require(['business/admin/resources/view/addView'], function (view) {
         view.init(layer);
     });
 
