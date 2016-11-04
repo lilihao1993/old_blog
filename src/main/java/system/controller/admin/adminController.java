@@ -2,10 +2,9 @@ package system.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import system.mapper.ResourceMapper;
+import system.dto.HomeResourceDto;
 import system.model.Resource;
 import system.service.IResourceService;
 
@@ -32,9 +31,9 @@ public class adminController {
      */
     @RequestMapping("/system")
     public String toSystem(Model model) throws Exception {
-        List<Resource> resourceList = resourceService.getResourceList();
-        model.addAttribute("list", resourceList);
-        return "page/system/admin/resources/system";
+        List<HomeResourceDto> homeResourceDtos = resourceService.getHomeResources();
+        model.addAttribute("homeResourceDtos", homeResourceDtos);
+        return "page/system/client/system";
     }
 
 }

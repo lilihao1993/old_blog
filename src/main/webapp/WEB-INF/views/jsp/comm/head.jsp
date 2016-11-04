@@ -51,7 +51,7 @@
 </div>
 <div id="form-div" class="hidden">
     <img class="pull-right" src="<c:url value="/img/ico/close.ico"/>"/>
-    <form action="/page/system/client/system">
+    <form action="/admin/system">
         <div class="row">
             <div class="form-group">
                 <img class="col-md-offset-4" src="<c:url value="/img/ico/user.ico"/>"/>

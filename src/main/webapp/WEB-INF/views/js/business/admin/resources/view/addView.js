@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/11/3.
  */
-define(['business/admin/label/model/addModel', 'comm/util', 'jquery', 'laydate', 'layedit', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util) {
+define(['business/admin/resources/model/addModel', 'comm/util', 'jquery', 'laydate', 'layedit', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util) {
 
     var layer = '';
 
@@ -26,15 +26,44 @@ define(['business/admin/label/model/addModel', 'comm/util', 'jquery', 'laydate',
                 handler: function () {
                     if (_formValid().form()) {
                         // 保存类别
-                        _saveResource($("#name").val(),$("#url").val(),$("#status"));
+                        _saveResource($("#name").val(), $("#url").val(), $("#status input:checked").val(), $("#level input:checked").val(), $("select option:selected").val());
                     }
                 }
             }
         ])
     }
 
+    /**
+     * 描述：保存资源
+     * @param name
+     * @param url
+     * @param status
+     * @param level
+     * @private
+     */
+    function _saveResource(name, url, status, level, parentId) {
+        model.saveResource({
+            data: {
+                name: name,
+                url: url,
+                status: status,
+                level: level,
+                parentId: parentId
+            },
+            callBack: function (data) {
+                if (data.data) {
+                    layer.msg("保存成功", {icon: 1, time: 500}, function () {
+                        top.location = "/admin/system";
+                    });
 
-    function _saveResource() {
+                } else {
+                    layer.msg("保存失败", {icon: 0, tion: 500})
+                }
+            }, error: function (jqXHR) {
+                layer.alert('操作失败，请重试');
+            }
+
+        });
 
     }
 
@@ -52,8 +81,7 @@ define(['business/admin/label/model/addModel', 'comm/util', 'jquery', 'laydate',
                     minlength: 2
                 },
                 url: {
-                    required: true,
-                    minlength: 2
+                    required: true
                 }
             }, messages: {
                 name: {
@@ -63,8 +91,7 @@ define(['business/admin/label/model/addModel', 'comm/util', 'jquery', 'laydate',
 
                 },
                 url: {
-                    required: "不可为空",
-                    minlength: "不可少于2个字符"
+                    required: "不可为空"
                 }
             }
         });

@@ -1,7 +1,9 @@
 package system.mapper;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+import system.dto.HomeResourceDto;
 import system.model.Resource;
 import system.model.ResourceExample;
 
@@ -93,4 +95,11 @@ public interface ResourceMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Resource record);
+
+    /**
+     * 描述：查询主资源列表
+     *
+     * @return 资源dto
+     */
+    List<HomeResourceDto> selectHomeResources();
 }

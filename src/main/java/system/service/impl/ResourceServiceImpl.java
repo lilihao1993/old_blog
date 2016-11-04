@@ -4,6 +4,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import system.dto.HomeResourceDto;
 import system.mapper.ResourceMapper;
 import system.model.Resource;
 import system.model.ResourceExample;
@@ -14,6 +16,7 @@ import java.util.List;
 /**
  * 描述：资源类service实现
  */
+@Service
 public class ResourceServiceImpl implements IResourceService {
 
     /**
@@ -59,6 +62,19 @@ public class ResourceServiceImpl implements IResourceService {
         return resourceMapper.selectByExample(new ResourceExample());
     }
 
+    /**
+     * 描述：获取跟资源列表
+     *
+     * @return 资源列表
+     * @throws Exception
+     */
+    @Override
+    public List<Resource> getRootResourceList() throws Exception {
+        ResourceExample resourceExample = new ResourceExample();
+        resourceExample.createCriteria().andLevelEqualTo("0");
+        return resourceMapper.selectByExample(resourceExample);
+    }
+
 
     /**
      * 描述：根据id获取资源地址（注：只有底层资源才会获取地址）
@@ -94,5 +110,16 @@ public class ResourceServiceImpl implements IResourceService {
     @Override
     public boolean modify(Resource resource) throws Exception {
         return resourceMapper.updateByPrimaryKeySelective(resource) > 0 ? true : false;
+    }
+
+    /**
+     * 描述:获取主页资源列表
+     *
+     * @return 资源列表
+     * @throws Exception
+     */
+    @Override
+    public List<HomeResourceDto> getHomeResources() throws Exception {
+        return resourceMapper.selectHomeResources();
     }
 }

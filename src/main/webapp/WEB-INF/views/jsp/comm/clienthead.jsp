@@ -10,7 +10,7 @@
 <div class="row clienthead">
     <div class="col-md-8">
         <span>
-            <a href="<c:url value='/page/system/admin/resources/add'/>">新增资源</a>
+            <a href="<c:url value='/admin/resource/toadd'/>">新增资源</a>
         </span>
     </div>
     <div class="col-md-4 prt">

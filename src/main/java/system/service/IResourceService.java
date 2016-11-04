@@ -1,6 +1,8 @@
 package system.service;
 
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
+import system.dto.HomeResourceDto;
 import system.model.Resource;
 
 import java.util.List;
@@ -36,6 +38,14 @@ public interface IResourceService {
     List<Resource> getResourceList() throws Exception;
 
     /**
+     * 描述：获取跟资源列表
+     *
+     * @return 资源列表
+     * @throws Exception
+     */
+    List<Resource> getRootResourceList() throws Exception;
+
+    /**
      * 描述：根据id获取资源地址（注：只有底层资源才会获取地址）
      *
      * @param id 资源唯一标识
@@ -61,5 +71,13 @@ public interface IResourceService {
      * @throws Exception
      */
     boolean modify(Resource resource) throws Exception;
+
+    /**
+     * 描述：获取主页资源列表
+     *
+     * @return 资源列表
+     * @throws Exception
+     */
+    List<HomeResourceDto> getHomeResources() throws Exception;
 
 }

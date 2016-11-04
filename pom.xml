@@ -238,7 +238,7 @@
             <jettyXml>jetty-context.xml</jettyXml>
             <stopKey>exit</stopKey>
             <stopPort>8081</stopPort>
-            <scanIntervalSeconds>10</scanIntervalSeconds>
+            <scanIntervalSeconds>0</scanIntervalSeconds>
           </configuration>
         </plugin>
 
