@@ -10,6 +10,7 @@ define(['jquery', 'comm/util', 'laydate', 'layedit', 'jquery.validate'], functio
      * 渲染
      */
     function init(layer) {
+
         //事件绑定
         _bind(layer);
 
@@ -39,7 +40,7 @@ define(['jquery', 'comm/util', 'laydate', 'layedit', 'jquery.validate'], functio
             handler: function () {
                 var url = $(this).attr("js-url");
                 if (url == '#') {
-                    layer.msg("请为此子级设置连接！", {icon: 0, time: 500});
+                    layer.msg("请为此子级设置连接！", {icon: 0, time: 800});
                     return;
                 }
                 $("iframe").attr("src", url);

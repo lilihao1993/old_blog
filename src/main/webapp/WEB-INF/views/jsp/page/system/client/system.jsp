@@ -17,10 +17,10 @@
         <ul class="menu toggle-setting-promotion">
             <c:forEach items="${homeResourceDtos}" var="homeResourceDto">
                 <li class="click-menu css-user-menu" >
-                    <span class="open" style="padding: 12px 120px 12px 0px">${homeResourceDto.rootName}</span>
+                    <span class="open cursor" style="padding: 12px 50% 12px 0px">${homeResourceDto.rootName}</span>
                     <ul style="display:none">
                     <c:forEach var="resource" items="${homeResourceDto.list}">
-                        <li js-url="${resource.url}"><span>${resource.name}</span></li>
+                        <li js-url="${resource.url}" class="cursor"><span>${resource.name}</span></li>
                     </c:forEach>
                     </ul>
                 </li>
@@ -75,7 +75,7 @@
         </ul>
     </div>
     <div id="iframe-div">
-        <iframe width="1210" height="900" frameborder="0" scrolling="no"  src="<c:url value='/admin/label/tolist?pageNum=0&pageSize=5'/>">
+        <iframe width="1145px" height="900px" frameborder="0" scrolling="no"   src="<c:url value='/admin/label/tolist?pageNum=0&pageSize=5'/>">
 
         </iframe>
     </div>

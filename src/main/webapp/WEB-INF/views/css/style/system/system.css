@@ -37,3 +37,7 @@ body {
 #iframe-div {
     float: right;
 }
+
+.cursor {
+    cursor:pointer
+}
