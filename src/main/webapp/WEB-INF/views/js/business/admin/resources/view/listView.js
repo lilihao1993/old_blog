@@ -39,10 +39,9 @@ define(['business/admin/resources/model/listModel', 'comm/util', 'jquery', 'layd
     function _tree() {
         model.getTree({
             callBack: function (data) {
-                console.log(JSON.stringify(data.data));
                 layui.tree({
                     elem: '#tree',
-                    nodes: [JSON.stringify(data.data)]
+                    nodes:  data.data
                 });
 
             }, error: function (jqXHR) {
@@ -50,6 +49,7 @@ define(['business/admin/resources/model/listModel', 'comm/util', 'jquery', 'layd
             }
         });
     }
+
 
     return {
         init: init

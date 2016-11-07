@@ -16,7 +16,6 @@ public class RootResourceTreeDto {
      * 描述：根id
      */
     private String id;
-    private boolean spread = true;
     /**
      * 描述：子资源列表
      */
@@ -36,14 +35,6 @@ public class RootResourceTreeDto {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public boolean isSpread() {
-        return spread;
-    }
-
-    public void setSpread(boolean spread) {
-        this.spread = spread;
     }
 
     public List<SubsetResourceTreeDto> getChildren() {
