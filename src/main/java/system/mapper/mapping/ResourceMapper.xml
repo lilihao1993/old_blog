@@ -293,15 +293,34 @@
   <!--以下手写的查询-->
  <resultMap id="homeResourceResultMap" type="system.dto.HomeResourceDto">
    <result column="ROOT_NAME" property="rootName" jdbcType="VARCHAR"/>
+   <result column="ROOT_ID" property="rootId" jdbcType="VARCHAR"/>
    <collection property="list" resultMap="BaseResultMap" javaType="ArrayList" ofType="system.model.Resource"/>
  </resultMap>
 
     <!--查询主资源列表-->
   <select id="selectHomeResources" resultMap="homeResourceResultMap">
-    SELECT a.BR_NAME ROOT_NAME ,b.ID,b.BR_NAME,b.BR_URL,b.BR_STATUS,b.BR_LEVEL,b.BR_PARENT_ID
+    SELECT a.BR_NAME ROOT_NAME,a.ID ROOT_ID ,b.ID,b.BR_NAME,b.BR_URL,b.BR_STATUS,b.BR_LEVEL,b.BR_PARENT_ID
     FROM  blog_resource a LEFT JOIN blog_resource b ON a.ID = b.BR_PARENT_ID
     <where>
       a.BR_LEVEL = 0
     </where>
+  </select>
+
+   <!--资源列表结果集-->
+  <resultMap id="RootResourceResultMap" type="system.dto.RootResourceTreeDto">
+      <result column="ROOT_NAME" property="name" jdbcType="VARCHAR"/>
+      <result column="ROOT_ID" property="id" jdbcType="VARCHAR"/>
+      <collection property="children" javaType="ArrayList" ofType="system.dto.SubsetResourceTreeDto">
+          <result column="SON_NAME" property="name" jdbcType="VARCHAR"/>
+          <result column="SON_ID" property="id" jdbcType="VARCHAR"/>
+      </collection>
+  </resultMap>
+    <!--查询列表-->
+  <select id="selectRootResources" resultMap="RootResourceResultMap">
+      SELECT a.BR_NAME ROOT_NAME,a.ID ROOT_ID ,b.ID SON_ID,b.BR_NAME SON_NAME
+      FROM  blog_resource a LEFT JOIN blog_resource b ON a.ID = b.BR_PARENT_ID
+      <where>
+          a.BR_LEVEL = 0
+      </where>
   </select>
 </mapper>

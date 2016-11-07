@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import system.dto.HomeResourceDto;
+import system.dto.RootResourceTreeDto;
 import system.mapper.ResourceMapper;
 import system.model.Resource;
 import system.model.ResourceExample;
@@ -121,5 +122,16 @@ public class ResourceServiceImpl implements IResourceService {
     @Override
     public List<HomeResourceDto> getHomeResources() throws Exception {
         return resourceMapper.selectHomeResources();
+    }
+
+    /**
+     * 描述：获取资源列表
+     *
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<RootResourceTreeDto> getRootResources() throws Exception {
+        return resourceMapper.selectRootResources();
     }
 }

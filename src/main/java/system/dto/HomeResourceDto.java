@@ -10,9 +10,14 @@ import java.util.List;
 public class HomeResourceDto {
 
     /**
-     * 描述：根路劲名称
+     * 描述：根路径名称
      */
     private String rootName;
+
+    /**
+     * 描述：跟路径ID
+     */
+    private String rootId;
 
     /**
      * 描述：子路劲集合
@@ -21,6 +26,14 @@ public class HomeResourceDto {
 
     public String getRootName() {
         return rootName;
+    }
+
+    public String getRootId() {
+        return rootId;
+    }
+
+    public void setRootId(String rootId) {
+        this.rootId = rootId;
     }
 
     public void setRootName(String rootName) {

@@ -145,6 +145,13 @@
         </div>
     </div>
 
+    <ul class="layui-nav layui-nav-tree layui-nav-side">
+        <li class="layui-nav-item"><a href="">最新活动</a></li>
+        <li class="layui-nav-item layui-this"><a href="">产品</a></li>
+        <li class="layui-nav-item"><a href="">解决方案</a></li>
+        <li class="layui-nav-item"><a href="">大数据</a></li>
+    </ul>
+
     <br><br>
 </body>
 <iframe src="http://www.baidu.com"></iframe>

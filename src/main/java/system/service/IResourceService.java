@@ -3,6 +3,7 @@ package system.service;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import system.dto.HomeResourceDto;
+import system.dto.RootResourceTreeDto;
 import system.model.Resource;
 
 import java.util.List;
@@ -80,4 +81,10 @@ public interface IResourceService {
      */
     List<HomeResourceDto> getHomeResources() throws Exception;
 
+    /**
+     * 描述：获取资源列表
+     * @return 资源列表
+     * @throws Exception
+     */
+    List<RootResourceTreeDto> getRootResources()throws Exception;
 }

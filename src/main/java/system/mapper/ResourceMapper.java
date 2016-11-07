@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import system.dto.HomeResourceDto;
+import system.dto.RootResourceTreeDto;
 import system.model.Resource;
 import system.model.ResourceExample;
 
@@ -102,4 +103,10 @@ public interface ResourceMapper {
      * @return 资源dto
      */
     List<HomeResourceDto> selectHomeResources();
+
+    /**
+     * 描述：查询列表
+     * @return
+     */
+    List<RootResourceTreeDto> selectRootResources();
 }

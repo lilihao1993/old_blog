@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import system.dto.HomeResourceDto;
+import system.dto.RootResourceTreeDto;
 import system.model.Resource;
 import system.service.IResourceService;
+
+import java.util.List;
 
 /**
  * 描述：资源控制器
@@ -60,6 +64,18 @@ public class ResourceController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public AjaxResponse<Boolean> addResource(Resource resource) throws Exception {
         return new AjaxResponse<>(resourceService.save(resource));
+    }
+
+    /**
+     * 描述：获取列表
+     *
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping(value = "/gethomelist", method = RequestMethod.GET)
+    public AjaxResponse<List<RootResourceTreeDto>> getHomeResourceList() throws Exception {
+        return new AjaxResponse<>(resourceService.getRootResources());
     }
 
 }
