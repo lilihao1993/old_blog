@@ -134,4 +134,6 @@ public class ResourceServiceImpl implements IResourceService {
     public List<RootResourceTreeDto> getRootResources() throws Exception {
         return resourceMapper.selectRootResources();
     }
+
+
 }
