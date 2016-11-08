@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/11/7.
  */
-define(['business/admin/resources/model/listModel', 'comm/util', 'jquery', 'laydate', 'layedit', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util) {
+define(['business/admin/resources/model/listModel', 'comm/util', 'handlebars', 'jquery', 'laydate', 'layedit', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util, handlebars) {
     var layer = '';
 
     /**
@@ -39,9 +39,14 @@ define(['business/admin/resources/model/listModel', 'comm/util', 'jquery', 'layd
     function _tree() {
         model.getTree({
             callBack: function (data) {
+                //生成树
                 layui.tree({
                     elem: '#tree',
-                    nodes:  data.data
+                    nodes: data.data,
+                    click: function (node) {
+                        //点击显示资源
+                        _getResource(node.id);
+                    }
                 });
 
             }, error: function (jqXHR) {
@@ -50,6 +55,29 @@ define(['business/admin/resources/model/listModel', 'comm/util', 'jquery', 'layd
         });
     }
 
+    /**
+     * 描述：获取资源
+     * @param id
+     * @private
+     */
+    function _getResource(id) {
+        model.getResource({
+            data: {id: id},
+            callBack: function (data) {
+                var resource = data.data.resource;
+                var temp = [];
+                temp.push({iname:resource.name,iid:resource.id,iurl:resource.url,istatus:resource.status,ilevel:resource.level,iparentid:resource.parentId,
+                    list:data.list})
+                console.log(temp);
+                //创建模板
+                var template = handlebars.compile($('#listTemplate').html());
+                //插入模板
+                $('#resource').html(template(temp[0]));
+            }, error: function (jqXHR) {
+                window.parent.layer.alert('操作失败，请重试');
+            }
+        });
+    }
 
     return {
         init: init

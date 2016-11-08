@@ -3,6 +3,10 @@
  */
 define(['comm/http'], function (http) {
 
+    /**
+     * 描述：获取树
+     * @param options
+     */
     function getTree(options) {
         http.httpRequest({
             url: "/admin/resource/gethomelist",
@@ -14,7 +18,23 @@ define(['comm/http'], function (http) {
         });
     }
 
+    /**
+     * 描述：获取资源
+     * @param options
+     */
+    function getResource(options) {
+        http.httpRequest({
+            url: "/admin/resource/get",
+            data: options.data,
+            success: function (data) {
+                options.callBack(data);
+            },
+            error: options.error
+        });
+    }
+
     return {
-        getTree: getTree
+        getTree: getTree,
+        getResource: getResource
     }
 });

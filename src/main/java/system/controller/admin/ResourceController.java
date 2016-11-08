@@ -13,7 +13,9 @@ import system.dto.RootResourceTreeDto;
 import system.model.Resource;
 import system.service.IResourceService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 描述：资源控制器
@@ -35,9 +37,13 @@ public class ResourceController {
      * @return
      * @throws Exception
      */
+    @ResponseBody
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public AjaxResponse<Resource> getResource(@RequestParam(name = "id") String id) throws Exception {
-        return new AjaxResponse<>(resourceService.get(id));
+    public AjaxResponse<Map<String, Object>> getResource(@RequestParam(name = "id") String id) throws Exception {
+        Map<String, Object> map = new HashMap<>();
+        map.put("resource", resourceService.get(id));
+        map.put("list", resourceService.getRootResourceList());
+        return new AjaxResponse<>(map);
     }
 
     /**
