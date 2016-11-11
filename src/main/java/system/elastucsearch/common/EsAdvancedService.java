@@ -3,14 +3,13 @@ package system.elastucsearch.common;
 import com.google.gson.JsonObject;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestResult;
-import io.searchbox.core.Bulk;
-import io.searchbox.core.BulkResult;
-import io.searchbox.core.Delete;
-import io.searchbox.core.Index;
+import io.searchbox.core.*;
 import io.searchbox.indices.CreateIndex;
 import io.searchbox.indices.DeleteIndex;
 import io.searchbox.indices.mapping.GetMapping;
-import io.searchbox.indices.mapping.PutMapping;
+import org.elasticsearch.Build;
+import org.elasticsearch.action.admin.indices.create.CreateIndexAction;
+import org.elasticsearch.index.translog.Translog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +47,19 @@ public class EsAdvancedService {
             logger.error("", e);
             return false;
         }
+        return true;
+    }
+
+    /**
+     * 描述：创建类型
+     * @param indexName
+     * @param indexType
+     * @return
+     */
+    public boolean CreateType(String indexName,String indexType)throws Exception{
+        Cat.IndicesBuilder indicesBuilder = new Cat.IndicesBuilder().addIndex(indexName).addType(indexType);
+        CatResult execute = jestClient.execute(indicesBuilder.build());
+        System.out.println(execute.getJsonObject().toString());
         return true;
     }
 
@@ -107,7 +119,6 @@ public class EsAdvancedService {
      */
     public boolean deleteDoc(String indexId, String indexName, String indexType) {
         Delete.Builder builder = new Delete.Builder(indexId);
-        builder.id(indexId);
         builder.refresh(true);
         Delete delete = builder.index(indexName).type(indexType).build();
         try {
@@ -129,8 +140,8 @@ public class EsAdvancedService {
      * @param indexType
      */
     public boolean deleteType(String indexName, String indexType) {
-        Delete.Builder builder = new Delete.Builder(indexName);
-        Delete delete = builder.index(indexName).type(indexType).build();
+        DeleteIndex delete = new DeleteIndex.Builder(indexName).type(indexType).build();
+
         try {
             JestResult result = jestClient.execute(delete);
             if (!result.isSucceeded()) {
@@ -165,7 +176,7 @@ public class EsAdvancedService {
 
     /**
      * 插入或更新文档
-     * 未完善
+     *
      * @param indexId
      * @param indexObject
      * @param indexName

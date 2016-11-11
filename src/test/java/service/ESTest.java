@@ -8,10 +8,10 @@ import io.searchbox.indices.CreateIndex;
 import io.searchbox.indices.DeleteIndex;
 import io.searchbox.indices.IndicesExists;
 import io.searchbox.indices.type.TypeExist;
-import io.searchbox.snapshot.CreateSnapshot;
-import org.elasticsearch.common.unit.TimeValue;
+import org.elasticsearch.common.xcontent.ToXContent;
+import org.elasticsearch.index.query.MultiTermQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.Scroll;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,6 @@ import system.elastucsearch.common.EsAdvancedService;
 import system.elastucsearch.common.RandomHan;
 import system.elastucsearch.model.Article;
 import system.mapper.ResourceMapper;
-
 import system.model.Resource;
 import system.model.ResourceExample;
 
@@ -30,7 +29,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
 /**
  * 描述：ES测试
@@ -201,10 +199,10 @@ public class ESTest extends SpringTestAutowired {
     @Test
     public void testDeleteType() throws Exception {
         //1.删除类型
-        boolean falg = esAdvancedService.deleteType("blog", indexName);
+        boolean falg = esAdvancedService.deleteType("blog", "orther");
         System.out.println(falg ? "删除成功" : "删除失败");
         //2.判断类型是否存在
-        TypeExist typeExist = new TypeExist.Builder("blog").addType(indexName).build();
+        TypeExist typeExist = new TypeExist.Builder("blog").addType("orther").build();
         JestResult isIndexExist = jestClient.execute(typeExist);
         if (!isIndexExist.isSucceeded()) {
             System.out.println("类型不存在");
@@ -236,7 +234,7 @@ public class ESTest extends SpringTestAutowired {
         map.put("1", "小虎");
         map.put("2", "小猫");
         map.put("3", "小炮");
-        boolean flag = esAdvancedService.createType("blog", "type", map);
+        boolean flag = esAdvancedService.createType("blog", "orther", map);
         System.out.println(flag ? "创建成功" : "创建失败");
     }
 
@@ -282,12 +280,28 @@ public class ESTest extends SpringTestAutowired {
     public void testQueryArticle() throws Exception {
 
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        searchSourceBuilder.query(QueryBuilders.queryStringQuery("加书"));
-//        searchSourceBuilder.query(QueryBuilders.matchAllQuery());
-//                searchSourceBuilder.query(QueryBuilders.multiMatchQuery("加书","title"));
-        Search search = new Search.Builder(searchSourceBuilder.toString())
-                .addIndex("article").addType("article").setParameter("from",1).setParameter("size",20)
-                .build();
+//        searchSourceBuilder.query(QueryBuilders.queryStringQuery("管理"));  //普通查询
+//        searchSourceBuilder.query(QueryBuilders.idsQuery("AVhMzQsrQh5SbCzXIAEK"));
+//============================================================================================
+        searchSourceBuilder.query(QueryBuilders.matchAllQuery());   //查询所有
+//============================================================================================
+//        searchSourceBuilder.query(QueryBuilders.multiMatchQuery("加书","title")); //按指定列查询
+//============================================================================================
+//        searchSourceBuilder.query(QueryBuilders.simpleQueryStringQuery("加书"));//简单查询 与 queryStringQuery 类似
+//============================================================================================
+//        searchSourceBuilder.query(QueryBuilders.fuzzyQuery("title","田")); //模糊查询  不支持两个中文
+//============================================================================================
+//        searchSourceBuilder.query(QueryBuilders.existsQuery("id"));//用id列查询
+//============================================================================================
+
+//        Search search = new Search.Builder(Search.getIdFromSource(IndexId)).addIndex(Constant.INDEX_NAME).addType(Constant.INDEX_TYPE).build(); //根据索引ID查询单个
+//============================================================================================
+//        Search search = new Search.Builder(searchSourceBuilder.toString())
+//                .addIndex("article").addType("article").setParameter("from",1).setParameter("size",20)  //分页查询
+//                .build();
+
+        System.out.println(searchSourceBuilder.toString());
+        Search search = new Search.Builder(searchSourceBuilder.toString()).addIndex("note").setParameter("from",2).setParameter("size",10).addType("article").build();
 
 //        CreateSnapshot createSnapShot = new CreateSnapshot.Builder("article", "li").build();
 //        JestResult execute = jestClient.execute(createSnapShot);
@@ -300,12 +314,23 @@ public class ESTest extends SpringTestAutowired {
         JestResult result = jestClient.execute(search);
         System.out.println(result.getJsonObject());
 
-        Update update = new Update.Builder("").build();
 
-        List<Article> sourceAsObjectList = result.getSourceAsObjectList(Article.class);
-        for (Article article : sourceAsObjectList) {
-            System.out.println(article.toString());
-        }
+//        List<Article> sourceAsObjectList = result.getSourceAsObjectList(Article.class);
+//        for (Article article : sourceAsObjectList) {
+//            System.out.println(article.toString());
+//        }
+    }
+
+
+    /**
+     * 描述:综合测试
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testStem() throws Exception {
+        //创建索引
+        esAdvancedService.CreateType("suoyin", "type");
 
     }
 }

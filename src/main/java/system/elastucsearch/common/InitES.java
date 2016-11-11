@@ -21,8 +21,8 @@ public class InitES {
      */
     @Bean
     public HttpClientConfig httpClientConfig() {
-//        String connectionUrl = "http://localhost:9200";
-        String connectionUrl = "http://192.168.5.115:9200";
+        String connectionUrl = "http://localhost:9200";
+//        String connectionUrl = "http://192.168.5.115:9200";
         HttpClientConfig httpClientConfig = new HttpClientConfig.Builder(connectionUrl).multiThreaded(true).build();
         return httpClientConfig;
     }
