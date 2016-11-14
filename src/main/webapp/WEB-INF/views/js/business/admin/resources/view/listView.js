@@ -65,9 +65,8 @@ define(['business/admin/resources/model/listModel', 'comm/util', 'handlebars', '
             data: {id: id},
             callBack: function (data) {
                 var resource = data.data.resource;
-                var temp = [];
-                temp.push({iname:resource.name,iid:resource.id,iurl:resource.url,istatus:resource.status,ilevel:resource.level,iparentid:resource.parentId,
-                    list:data.list})
+                var temp = {iname:resource.name,iid:resource.id,iurl:resource.url,istatus:resource.status,ilevel:resource.level,iparentid:resource.parentId,
+                    list:data.list};
                 console.log(temp);
                 //创建模板
                 var template = handlebars.compile($('#listTemplate').html());
