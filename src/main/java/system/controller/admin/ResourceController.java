@@ -39,11 +39,11 @@ public class ResourceController {
      */
     @ResponseBody
     @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public AjaxResponse<Resource> getResource(@RequestParam(name = "id") String id) throws Exception {
+    public AjaxResponse<Map> getResource(@RequestParam(name = "id") String id) throws Exception {
         Map<String, Object> map = new HashMap<>();
         map.put("resource", resourceService.get(id));
         map.put("list", resourceService.getRootResourceList());
-        return new AjaxResponse<>(resourceService.get(id));
+        return new AjaxResponse<>(map);
     }
 
     /**
