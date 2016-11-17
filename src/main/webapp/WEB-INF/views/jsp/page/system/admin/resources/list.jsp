@@ -16,7 +16,13 @@
 </head>
 <body>
     <form class="layui-form" id="label-form">
-        <div id="tree"></div>
+        <div class="row">
+            <div id="tree" class="col-md-2 col-md-offset-1"></div>
+            <div class="col-md-1">
+                <a class="layui-btn layui-btn-primary layui-btn-big" href="<c:url value="/admin/resource/addoredit"/>">新增资源</a>
+            </div>
+        </div>
+
         <div id="resource"></div>
     </form>
 </body>
@@ -24,41 +30,38 @@
     <div class="layui-form-item">
         <label class="layui-form-label">资源名称</label>
         <div class="layui-input-block">
-            <input type="text" name="iname" autocomplete="off" value="{{iname}}" placeholder="请输入资源名称" class="layui-input"/>
+            <input type="text" name="name" autocomplete="off" value="{{name}}" placeholder="请输入资源名称" class="layui-input" readonly/>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">资源地址</label>
         <div class="layui-input-block">
-            <input type="text" name="iurl" autocomplete="off" value="{{iurl}}" placeholder="请输入资源地址" class="layui-input"/>
+            <input type="text" name="url" autocomplete="off" value="{{url}}" placeholder="请输入资源地址" class="layui-input" readonly/>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">状态：</label>
-        <div class="layui-input-block" id="status">
-            <input type="radio" name="status" value="0" title="显示"checked>
-            <input type="radio" name="status" value="1" title="影藏" >
+        <div class="layui-input-block">
+            {{#ifCond status '==' 0}}
+                <input type="text" value="显示" class="layui-input" readonly/>
+            {{else}}
+                <input type="text" value="隐藏" class="layui-input" readonly/>
+            {{/ifCond}}
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">层级：</label>
-        <div class="layui-input-block" id="level">
-            <input type="radio" name="level" value="0" title="顶级"checked>
-            <input type="radio" name="level" value="1" title="子级" >
+        <div class="layui-input-block">
+            {{#ifCond level '==' 0}}
+              <input type="text" value="顶级" class="layui-input" readonly/>
+            {{else}}
+              <input type="text" value="子级" class="layui-input" readonly/>
+            {{/ifCond}}
         </div>
     </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">父级</label>
-        <div class="layui-input-block">
-            <select name="interest" lay-filter="aihao">
-                <option value=""></option>
-                {{#each list}}
-                    <option value="{{id}}">{{name}}</option>
-                {{/each}}
-            </select>
-        </div>
+    <div class="layui-form-item col-md-offset-2">
+        <a class="layui-btn layui-btn-primary layui-btn-big" href="<c:url value="/admin/resource/addoredit?id={{id}}"/>">修改资源</a>
     </div>
 </script>
 <script src="<c:url value='/js/lib/layui/layui.js' />"></script>

@@ -47,16 +47,17 @@ public class ResourceController {
     }
 
     /**
-     * 描述：跳转到资源新增页面
+     * 描述：跳转到资源新增/修改页面
      *
      * @param model
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/toadd", method = RequestMethod.GET)
-    public String toAddResource(Model model) throws Exception {
+    @RequestMapping(value = "/addoredit", method = RequestMethod.GET)
+    public String toAddResource(String id, Model model) throws Exception {
         model.addAttribute("list", resourceService.getRootResourceList());
-        return "page/system/admin/resources/add";
+        model.addAttribute("resource", resourceService.get(id));
+        return "page/system/admin/resources/resource";
     }
 
     /**

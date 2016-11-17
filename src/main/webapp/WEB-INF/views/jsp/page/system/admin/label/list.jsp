@@ -12,7 +12,7 @@
 <body>
 <!--响应式表格-->
 <div class="table-responsive">
-    <button class="layui-btn layui-btn-big"><a href="/page/system/admin/label/add">新增类别</a></button>
+    <button class="layui-btn layui-btn-big"><a href="/page/system/admin/label/label">新增类别</a></button>
     <table class="table table-bordered table-hover">
             <thead>
                 <tr>

@@ -53,7 +53,7 @@ define(['business/admin/resources/model/addModel', 'comm/util', 'jquery', 'layda
             callBack: function (data) {
                 if (data.data) {
                     layer.msg("保存成功", {icon: 1, time: 500}, function () {
-                        top.location = "/admin/system";
+                        top.location = "/admin/system?id=57c78c22a4bc11e6a2c0fcaa14e16be9";
                     });
 
                 } else {

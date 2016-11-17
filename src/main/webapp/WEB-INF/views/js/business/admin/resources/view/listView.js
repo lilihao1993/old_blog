@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/11/7.
  */
-define(['business/admin/resources/model/listModel', 'comm/util', 'handlebars', 'jquery', 'laydate', 'layedit', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util, handlebars) {
+define(['business/admin/resources/model/listModel', 'comm/util', 'handlebars', 'jquery', 'laydate', 'layedit', 'pagination', 'comm/hbsHelper', 'comm/validateRules'], function (model, util, handlebars) {
     var layer = '';
 
     /**
@@ -46,6 +46,7 @@ define(['business/admin/resources/model/listModel', 'comm/util', 'handlebars', '
                     click: function (node) {
                         //点击显示资源
                         _getResource(node.id);
+
                     }
                 });
 
@@ -65,13 +66,21 @@ define(['business/admin/resources/model/listModel', 'comm/util', 'handlebars', '
             data: {id: id},
             callBack: function (data) {
                 var resource = data.data.resource;
-                var temp = {iname:resource.name,iid:resource.id,iurl:resource.url,istatus:resource.status,ilevel:resource.level,iparentid:resource.parentId,
-                    list:data.list};
-                console.log(temp);
+                console.log(resource);
+                // var temp = {
+                //     iname: resource.name,
+                //     iid: resource.id,
+                //     iurl: resource.url,
+                //     istatus: resource.status,
+                //     ilevel: resource.level,
+                //     iparentid: resource.parentId,
+                //     list: data.list
+                // };
+                // console.log(temp);
                 //创建模板
                 var template = handlebars.compile($('#listTemplate').html());
                 //插入模板
-                $('#resource').html(template(temp[0]));
+                $('#resource').html(template(resource));
             }, error: function (jqXHR) {
                 window.parent.layer.alert('操作失败，请重试');
             }

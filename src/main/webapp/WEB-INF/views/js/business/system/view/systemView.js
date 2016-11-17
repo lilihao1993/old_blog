@@ -43,6 +43,7 @@ define(['jquery', 'comm/util', 'laydate', 'layedit', 'jquery.validate'], functio
                     layer.msg("请为此子级设置连接！", {icon: 0, time: 800});
                     return;
                 }
+                console.log(url);
                 $("iframe").attr("src", url);
             }
         }

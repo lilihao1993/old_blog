@@ -75,7 +75,7 @@
         </ul>
     </div>
     <div id="iframe-div">
-        <iframe width="1145px" height="900px" frameborder="0" scrolling="no"   src="<c:url value='/admin/label/tolist?pageNum=0&pageSize=5'/>">
+        <iframe width="1145px" height="900px" frameborder="0" scrolling="no"   src="${resourceUrl}">
 
         </iframe>
     </div>

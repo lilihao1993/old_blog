@@ -100,6 +100,6 @@ public class LabelController {
         System.out.println("--" + id);
         Label label = labelService.getLabel(id);
         model.addAttribute("label", label);
-        return "page/system/admin/label/add";
+        return "page/system/admin/label/label";
     }
 }

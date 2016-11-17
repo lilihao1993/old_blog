@@ -45,7 +45,8 @@ define(['business/admin/label/model/addModel', 'comm/util', 'jquery', 'laydate',
                 if (data.data) {
                     //跳转到list页面
                     layer.alert("保存成功");
-                    top.location = "/admin/label/tolist?pageNum=1&pageSize=5";
+                    //跳转类别列表
+                    top.location = "/admin/system?id=05aeecc4a24a11e6aeb7fcaa14e16be9";
                 } else {
                     //弹出保存错误信息
                     layer.alert("保存失败,请重试", {time: 500});
