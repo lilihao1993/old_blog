@@ -34,7 +34,7 @@ define(['business/admin/label/model/listModel', 'comm/util', 'handlebars', 'layd
                 event: 'click',
                 handler: function () {
                     var id = $(this).attr("label-id")
-                    layer.confirm("确认删除本类别？", {icon: 3, title: "提示"}, function () {
+                    window.parent.layer.confirm("确认删除本类别？", {icon: 3, title: "提示"}, function () {
                         _delLabel(id);
                         layer.closeAll('dialog');
                         window.location.reload();

@@ -25,64 +25,14 @@
                     </ul>
                 </li>
             </c:forEach>
-
-
-            <%--<ul class="layui-nav layui-nav-tree layui-nav-side">--%>
-                <%--<c:forEach items="${homeResourceDtos}" var="homeResourceDto">--%>
-                    <%--<li class="layui-nav-item">--%>
-                        <%--<span class="open" >${homeResourceDto.rootName}</span>--%>
-                        <%--<ul style="display:none">--%>
-                            <%--<c:forEach var="resource" items="${homeResourceDto.list}">--%>
-                                <%--<li js-url="${resource.url}"><span>${resource.name}</span></li>--%>
-                            <%--</c:forEach>--%>
-                        <%--</ul>--%>
-                    <%--</li>--%>
-                <%--</c:forEach>--%>
-
-            <%--<li class="click-menu css-user-menu open">--%>
-                <%--<span>用户管理</span>--%>
-                <%--<ul style="display:none">--%>
-                    <%--<li><span><a >账户管理</a></span></li>--%>
-                    <%--<li><span>个人资料</span></li>--%>
-                    <%--<li><span>账户中心</span></li>--%>
-                <%--</ul>--%>
-            <%--</li>--%>
-            <%--<li class="click-menu css-user-menu open">--%>
-                <%--<span>应用管理</span>--%>
-                <%--<ul style="display: none">--%>
-                    <%--<li><span>账户管理</span></li>--%>
-                    <%--<li><span>个人资料</span></li>--%>
-                    <%--<li  id="lt" js-url="http://www.baidu.com"><span>账户中心</span></li>--%>
-                    <%--<li><span><a href="/admin/label/tolist?pageNum=0&pageSize=5">类别</a></span></li>--%>
-                <%--</ul>--%>
-            <%--</li>--%>
-            <%--<li class="click-menu css-user-menu open">--%>
-                <%--<span>配置管理</span>--%>
-                <%--<ul style="display: none">--%>
-                    <%--<li><span>账户管理</span></li>--%>
-                    <%--<li><span>个人资料</span></li>--%>
-                    <%--<li><span>账户中心</span></li>--%>
-                <%--</ul>--%>
-            <%--</li>--%>
-            <%--<li class="click-menu css-user-menu open">--%>
-                <%--<span>业务统计</span>--%>
-                <%--<ul style="display: none">--%>
-                    <%--<li><span><a href="/page/system/text">账户管理</a></span></li>--%>
-                    <%--<a href="/editor"><li><span> 个人资料</span></li></a>--%>
-                    <%--<li><span>账户中心</span></li>--%>
-                <%--</ul>--%>
-            <%--</li>--%>
         </ul>
     </div>
-    <div id="iframe-div">
+    <div id="iframe-div" style="margin-right: 60px;margin-top: 10px">
         <iframe width="1145px" height="900px" frameborder="0" scrolling="no"   src="${resourceUrl}">
 
         </iframe>
     </div>
 </div>
-
-
-<h1>进入后端管理页面</h1>
 </body>
 <script src="<c:url value='/js/lib/layui/layui.js' />"></script>
 <script src="<c:url value='/js/require.js'/>"></script>

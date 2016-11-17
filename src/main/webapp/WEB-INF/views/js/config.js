@@ -4,6 +4,7 @@ require.config({
         'jquery': 'jquery',
         'layui': 'lib/layui/layui',
         'layer1': 'lib/layer/layer',
+        'simplemde':"simplemde.min",
         'laydate': "lib/layui/lay/modules/laydate",
         'layedit': "lib/layui/lay/modules/layedit",
         'handlebars': 'lib/handlebars-1.0.0',

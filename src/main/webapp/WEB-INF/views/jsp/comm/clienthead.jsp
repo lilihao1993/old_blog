@@ -9,9 +9,6 @@
 <body>
 <div class="row clienthead">
     <div class="col-md-8">
-        <span>
-            <a href="<c:url value='/admin/resource/addoredit'/>">新增资源</a>
-        </span>
     </div>
     <div class="col-md-4 prt">
 

@@ -33,8 +33,26 @@ define(['comm/http'], function (http) {
         });
     }
 
+    /**
+     * 描述：删除资源
+     * @param options
+     */
+    function deleteResource(options) {
+        http.httpRequest({
+            url: "/admin/resource/delete",
+            type: 'post',
+            data: options.data,
+            success: function (data) {
+                options.callBack(data);
+            },
+            error: options.error
+        });
+    }
+
     return {
         getTree: getTree,
-        getResource: getResource
+        getResource: getResource,
+        deleteResource: deleteResource
+
     }
 });

@@ -22,10 +22,14 @@ define(['business/admin/resources/model/listModel', 'comm/util', 'handlebars', '
     function _bind() {
         util.bindEvents([
             {
-                el: '',
-                event: '',
+                el: '#delete',
+                event: 'click',
                 handler: function () {
-
+                    //删除资源
+                    var id = $(this).attr("js-id");
+                    window.parent.layer.confirm("确认删除资源？", {icon: 3, title: "提示"}, function () {
+                        _deleteResource(id);
+                    });
                 }
             }
         ])
@@ -81,6 +85,25 @@ define(['business/admin/resources/model/listModel', 'comm/util', 'handlebars', '
                 var template = handlebars.compile($('#listTemplate').html());
                 //插入模板
                 $('#resource').html(template(resource));
+            }, error: function (jqXHR) {
+                window.parent.layer.alert('操作失败，请重试');
+            }
+        });
+    }
+
+    /**
+     * 描述：删除资源
+     * @private
+     */
+    function _deleteResource(id) {
+        model.deleteResource({
+            data: {id: id},
+            callBack: function (data) {
+                if (data.data) {
+                    top.location = "/admin/system?id=57c78c22a4bc11e6a2c0fcaa14e16be9";
+                } else {
+                    layer.msg("删除失败", {icon: 0, tion: 500})
+                }
             }, error: function (jqXHR) {
                 window.parent.layer.alert('操作失败，请重试');
             }

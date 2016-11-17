@@ -1,11 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2016/11/3
-  Time: 12:43
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -29,27 +23,27 @@
                 <input type="text" name="url" value="${resource.url}" id="url" placeholder="请输入资地址" autocomplete="off" class="layui-input">
             </div>
         </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label">状态：</label>
             <div class="layui-input-block" id="status">
-                <input type="radio" name="status" value="0" title="显示"checked>
-                <input type="radio" name="status" value="1" title="影藏" >
+                <input type="radio" name="status" value="0" title="显示" <c:if test="${resource.status == '0'||resource.status == null}">checked</c:if>/>
+                <input type="radio" name="status" value="1" title="影藏" <c:if test="${resource.status == '1'}">checked</c:if>/>
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">层级：</label>
             <div class="layui-input-block" id="level">
-                <input type="radio" name="level" value="0" title="顶级"checked>
-                <input type="radio" name="level" value="1" title="子级" >
+                <input type="radio" name="level" value="0" title="顶级"<c:if test="${resource.level == '0'||resource.status == null}">checked</c:if>/>
+                <input type="radio" name="level" value="1" title="子级" <c:if test="${resource.level == '1'}">checked</c:if>/>
             </div>
         </div>
         <div class="layui-form-item">
             <select lay-verify="">
-                <option value="#" selected="selected">无父级</option>
-                <c:forEach var="resource" items="${list}">
-                    <option value="${resource.id}">${resource.name}</option>
+
+                <option value="#"  <c:if test="${resource.parentId == '#'}">selected="selected"</c:if>>无父级</option>
+                <c:forEach var="reso" items="${list}">
+                    <option value="${reso.id}"<c:if test="${resource.parentId == reso.id}">selected="selected"</c:if>>${reso.name}</option>
                 </c:forEach>
             </select>
         </div>

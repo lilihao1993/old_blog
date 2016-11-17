@@ -62,6 +62,7 @@
     </div>
     <div class="layui-form-item col-md-offset-2">
         <a class="layui-btn layui-btn-primary layui-btn-big" href="<c:url value="/admin/resource/addoredit?id={{id}}"/>">修改资源</a>
+        <input type="button" class="layui-btn layui-btn-primary layui-btn-big" id="delete" js-id="{{id}}" value="删除资源"/>
     </div>
 </script>
 <script src="<c:url value='/js/lib/layui/layui.js' />"></script>
