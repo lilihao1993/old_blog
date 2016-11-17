@@ -1,6 +1,8 @@
 package system.controller.admin;
 
 import comm.bean.AjaxResponse;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+import org.elasticsearch.common.recycler.Recycler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,6 +85,19 @@ public class ResourceController {
     @RequestMapping(value = "/gethomelist", method = RequestMethod.GET)
     public AjaxResponse<List<RootResourceTreeDto>> getHomeResourceList() throws Exception {
         return new AjaxResponse<>(resourceService.getRootResources());
+    }
+
+    /**
+     * 描述：删除资源
+     *
+     * @param id 资源id
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public AjaxResponse<Boolean> delete(String id) throws Exception {
+        return new AjaxResponse<>(resourceService.remove(id));
     }
 
 }

@@ -98,7 +98,13 @@ public class ResourceServiceImpl implements IResourceService {
      */
     @Override
     public boolean remove(String id) throws Exception {
-        return resourceMapper.deleteByPrimaryKey(id) > 0 ? true : false;
+        //1.删除顶级资源
+        resourceMapper.deleteByPrimaryKey(id);
+        //2.删除删除其子级资源
+        ResourceExample resourceExample = new ResourceExample();
+        resourceExample.createCriteria().andIdEqualTo(id);
+        resourceMapper.deleteByExample(resourceExample);
+        return true;
     }
 
     /**
