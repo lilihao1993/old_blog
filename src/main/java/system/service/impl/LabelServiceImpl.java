@@ -81,4 +81,15 @@ public class LabelServiceImpl implements ILabelService {
     public Label getLabel(String id) throws Exception {
         return labelMapper.selectByPrimaryKey(id);
     }
+
+    /**
+     * 描述：获取所有类别
+     *
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public List<Label> getAll() throws Exception {
+        return labelMapper.selectByExample(new LabelExample());
+    }
 }

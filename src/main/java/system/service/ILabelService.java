@@ -44,4 +44,12 @@ public interface ILabelService {
      * @throws Exception
      */
     Label getLabel(String id) throws Exception;
+
+    /**
+     * 描述：获取所有类别
+     *
+     * @return
+     * @throws Exception
+     */
+    List<Label> getAll() throws Exception;
 }
