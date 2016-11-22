@@ -1,5 +1,7 @@
 package system.controller.admin;
 
+import com.github.pagehelper.PageInfo;
+import comm.bean.AjaxResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import system.mapper.ArticleMapper;
 import system.model.Article;
 import system.service.IArticleService;
 import system.service.ILabelService;
@@ -39,7 +43,23 @@ public class ArticleController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) throws Exception {
+        model.addAttribute("page", articleService.getList(1, 5));
         return "page/system/admin/article/list";
+    }
+
+
+    /**
+     * 描述：Ajax分页获取文章列表
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping(value = "/pagelist", method = RequestMethod.GET)
+    public AjaxResponse<PageInfo<Article>> pageList(int pageNum, int pageSize) throws Exception {
+        return new AjaxResponse<>(articleService.getList(pageNum, pageSize));
     }
 
     /**
@@ -74,6 +94,18 @@ public class ArticleController {
     public String addorEdit(Article article) throws Exception {
         articleService.saveOrModify(article);
         return "redirect:list";
+    }
+
+    /**
+     * 描述：删除文章
+     *
+     * @param id id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public AjaxResponse<Boolean> delete(@RequestParam(value = "id", required = true) String id) throws Exception {
+        return new AjaxResponse<>(articleService.remove(id));
     }
 
 

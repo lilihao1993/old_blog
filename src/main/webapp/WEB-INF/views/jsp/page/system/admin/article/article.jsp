@@ -16,35 +16,41 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">标题：</label>
                 <div class="layui-input-block">
-                    <input type="text" id="title" name="title" placeholder="请输入标题" value="${title}" class="layui-input">
+                    <input type="text" id="title" name="title" placeholder="请输入标题" value="${article.title}" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">摘要：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="summary" placeholder="请输入摘要" value="${summary}" class="layui-input">
+                    <input type="text" name="summary" placeholder="请输入摘要" value="${article.summary}" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item" style="margin-left: 23px" >
                 <label >内容：</label>
-                <script id="container" name="content" type="text/plain"></script>
+                <script id="container" name="content" type="text/plain">${article.content}</script>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">热门：</label>
                 <div class="layui-input-block" id="hot">
-                    <input type="radio" name="hot" value="0" title="热门"<c:if test="${resource.level == '0'||resource.status == null}">checked</c:if>/>
-                    <input type="radio" name="hot" value="1" title="非热门" <c:if test="${resource.level == '1'}">checked</c:if>/>
+                    <input type="radio" name="hot" value="0" title="热门"<c:if test="${article.hot == '0'}">checked</c:if>/>
+                    <input type="radio" name="hot" value="1" title="非热门" <c:if test="${article.hot == '1'}">checked</c:if>/>
                 </div>
             </div>
+            <div class="layui-form-item">
                 <label class="layui-form-label">类别：</label>
                 <div class="layui-input-block">
                     <select name="labelId" class="form-control ipt-txt">
                         <option value="">请选择</option>
                         <c:forEach var="label" items="${labels}">
-                            <option value="${label.id}">${label.name}</option>
+                            <option value="${label.id}" <c:if test="${label.id == article.labelId}">selected="selected"</c:if>>${label.name}</option>
                         </c:forEach>
                     </select>
                 </div>
+            </div>
+            <input type="hidden" name="id" value="${article.id}"/>
+            <c:if test="${article.id} !=''">
+                <input type="hidden" name="createTime" value="${article.createTime}">
+            </c:if>
             <div class="col-md-offset-5">
                 <input type="button" id="add"  class="layui-btn layui-btn-big layui-btn-normal" value="确认"/>
                 <input type="button" id="cancel" class="layui-btn layui-btn-big layui-btn-normal" value="取消"/>

@@ -28,9 +28,16 @@ define(['business/admin/label/model/addModel', 'comm/util', 'jquery', 'laydate',
                 handler: function () {
 
                     if (_formValid()) {
-                        
+
                         $("#label-form").submit();
                     }
+                }
+            }, {
+                el: '#cancel',
+                event: 'click',
+                handler: function () {
+                    //跳转至文章列表页
+                    top.location = "/admin/system?id=dd224137ac9711e685e3fcaa14e16be9";
                 }
             }
         ])
@@ -81,7 +88,7 @@ define(['business/admin/label/model/addModel', 'comm/util', 'jquery', 'laydate',
             }
         }).form();
     }
-    
+
     return {
         init: init
     };

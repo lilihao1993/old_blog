@@ -1,5 +1,7 @@
 package system.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import system.model.Article;
 
 /**
@@ -24,4 +26,23 @@ public interface IArticleService {
      * @throws Exception
      */
     void saveOrModify(Article article) throws Exception;
+
+    /**
+     * 描述：分页获取文章列表
+     *
+     * @param pageNum  页码
+     * @param pageSize 页数
+     * @return
+     * @throws Exception
+     */
+    PageInfo<Article> getList(int pageNum, int pageSize) throws Exception;
+
+    /**
+     * 描述：删除文章
+     *
+     * @param id 文章id
+     * @return
+     * @throws Exception
+     */
+    boolean remove(String id) throws Exception;
 }
