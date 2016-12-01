@@ -4,7 +4,7 @@
 /**
  * 通用基础js
  */
-define(['business/admin/article/model/listModel', 'comm/util', 'handlebars', 'jquery', 'laydate', 'layedit','comm/hbsHelper', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util, handlebars) {
+define(['business/admin/article/model/listModel', 'comm/util', 'handlebars', 'jquery', 'laydate', 'layedit', 'comm/hbsHelper', 'pagination', 'jquery.validate', 'comm/validateRules'], function (model, util, handlebars) {
     var pageSize = 5;
     var layer = '';
 
@@ -52,7 +52,7 @@ define(['business/admin/article/model/listModel', 'comm/util', 'handlebars', 'jq
                 id: id
             }, callBack: function (data) {
                 if (data) {
-                    return true;
+                    window.parent.layer.alert("文章已删除！")
                 } else {
                     window.parent.layer.alert("删除失败,请重试");
                 }

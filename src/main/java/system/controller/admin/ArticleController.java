@@ -103,6 +103,7 @@ public class ArticleController {
      * @return
      * @throws Exception
      */
+    @ResponseBody
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public AjaxResponse<Boolean> delete(@RequestParam(value = "id", required = true) String id) throws Exception {
         return new AjaxResponse<>(articleService.remove(id));

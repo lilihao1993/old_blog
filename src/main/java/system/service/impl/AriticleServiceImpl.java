@@ -55,7 +55,7 @@ public class AriticleServiceImpl implements IArticleService {
             articleMapper.insert(article);
         } else {
             //修改文章
-            articleMapper.updateByPrimaryKey(article);
+            articleMapper.updateByPrimaryKeySelective(article);
         }
     }
 
@@ -80,7 +80,7 @@ public class AriticleServiceImpl implements IArticleService {
      * 描述：删除文章
      *
      * @param id 文章id
-     * @return
+     * @return true 删除成功 ，false 删除失败
      * @throws Exception
      */
     @Override
